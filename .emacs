@@ -60,7 +60,16 @@
 (global-set-key "\r" 'newline-and-indent)
 
 ;; bindings
-(define-key paredit-mode-map (kbd "\r") 'paredit-newline)
+(eval-after-load "paredit"
+  '(progn
+     (mapc (lambda (binding)
+             (define-key paredit-mode-map (car binding) (cadr binding)))
+           `(;(,(kbd "RET")  newline)
+             ;(,(kbd "C-j")  paredit-newline)
+             (,(kbd "\r") paredit-newline)
+             ;(,(kbd "<C-left>") paredit-forward-barf-sexp)
+             ;(,(kbd "<C-right>") paredit-forward-slurp-sexp))
+           ))))
 
 ;; (define-key slime-mode-map "\M-\C-a" 'slime-beginning-of-defun)
 ;; (define-key slime-mode-map "\M-\C-e" 'slime-end-of-defun)
