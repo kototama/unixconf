@@ -1,20 +1,4 @@
-
-
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
-
-
-
 ;;; EMACS customization via the menu
-
-
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -54,18 +38,45 @@
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
+;; clojure-mode
+(add-to-list 'load-path "/opt/clojure-mode")
+(require 'clojure-mode)
+
+;; paredit
+(add-to-list 'load-path "/opt/paredit-20")
+(autoload 'paredit-mode "paredit")
+
+
+;; swank-clojure
+(add-to-list 'load-path "/opt/swank-clojure/src/emacs")
+
+;; set CLASSPATH for Clojure and SLIME
+(setq swank-clojure-jar-path "/opt/clojure/clojure.jar"
+      swank-clojure-extra-classpaths (list
+				      "/opt/swank-clojure/src/main/clojure"
+				      "/opt/clojure-contrib/clojure-contrib.jar"
+                                      "~/Documents/Projects/Clojure/ansicommonlisp-book-clojure/ch05"
+                                      "~/Documents/Projects/Clojure/ansicommonlisp-book-clojure/ch05/classes"))
+
+(require 'swank-clojure-autoload)
+
+;; Slime
+(eval-after-load "slime"
+   '(progn (slime-setup '(slime-repl))))
+(add-to-list 'load-path "/opt/slime")
+(require 'slime)
+(slime-setup)
+
+;; Adding sbcl to Slime
+(add-to-list 'slime-lisp-implementations '(sbcl ("sbcl")))
+(setq slime-default-lisp 'clojure)
+
 ;; enable paredit for Lisp / Clojure modes / SLIME REPL
 (mapc (lambda (mode)
 	(let ((hook (intern (concat (symbol-name mode)
 				    "-mode-hook"))))
 	  (add-hook hook (lambda () (paredit-mode +1)))))
       '(emacs-lisp lisp inferior-lisp clojure slime slime-repl))
-
-;; set CLASSPATH for Clojure and SLIME
-(setq swank-clojure-classpath (list "~/.swank-clojure/*"
-                                    "~/Documents/Projects/Clojure/ansicommonlisp-book-clojure/ch05"
-                                    "~/Documents/Projects/Clojure/ansicommonlisp-book-clojure/ch05/classes"
-                                    ))
 
 ;; global bindings
 (global-set-key [C-tab] 'other-window)
@@ -76,11 +87,11 @@
   '(progn
      (mapc (lambda (binding)
              (define-key paredit-mode-map (car binding) (cadr binding)))
-           `(;(,(kbd "RET")  newline)
-             ;(,(kbd "C-j")  paredit-newline)
+           `(			      ;(,(kbd "RET")  newline)
+					;(,(kbd "C-j")  paredit-newline)
              (,(kbd "\r") paredit-newline)
-             ;(,(kbd "<C-left>") paredit-forward-barf-sexp)
-             ;(,(kbd "<C-right>") paredit-forward-slurp-sexp))
+					;(,(kbd "<C-left>") paredit-forward-barf-sexp)
+					;(,(kbd "<C-right>") paredit-forward-slurp-sexp))
              ))))
 
 ;; (define-key slime-mode-map "\M-\C-a" 'slime-beginning-of-defun)
