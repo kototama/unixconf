@@ -20,6 +20,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(inhibit-startup-screen t)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(transient-mark-mode t))
@@ -28,7 +29,17 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- )
+ '(default ((t (:foreground "wheat" :background "black"))))
+ '(flyspell-duplicate ((t (:foreground "Gold3" :underline t :weight normal))))
+ '(flyspell-incorrect ((t (:foreground "OrangeRed" :underline t :weight normal))))
+ '(font-lock-comment-face ((t (:foreground "SteelBlue1"))))
+ '(font-lock-function-name-face ((t (:foreground "gold"))))
+ '(font-lock-keyword-face ((t (:foreground "springgreen"))))
+ '(font-lock-type-face ((t (:foreground "PaleGreen"))))
+ '(font-lock-variable-name-face ((t (:foreground "Coral"))))
+ '(menu ((((type x-toolkit)) (:background "light slate gray" :foreground "wheat" :box (:line-width 2 :color "grey75" :style released-button)))))
+ '(mode-line ((t (:foreground "black" :background "light slate gray"))))
+ '(tool-bar ((((type x w32 mac) (class color)) (:background "midnight blue" :foreground "wheat" :box (:line-width 1 :style released-button))))))
 
 ;; fonts
 (if (eq window-system 'x)
@@ -40,6 +51,9 @@
 ;; colors
 (load-file "~/.emacs.d/colors.el")
 
+;; Changes all yes/no questions to y/n type
+(fset 'yes-or-no-p 'y-or-n-p)
+
 ;; enable paredit for Lisp / Clojure modes / SLIME REPL
 (mapc (lambda (mode)
 	(let ((hook (intern (concat (symbol-name mode)
@@ -47,13 +61,11 @@
 	  (add-hook hook (lambda () (paredit-mode +1)))))
       '(emacs-lisp lisp inferior-lisp clojure slime slime-repl))
 
-
-
 ;; set CLASSPATH for Clojure and SLIME
-
 (setq swank-clojure-classpath (list "~/.swank-clojure/*"
-                                    "~/Documents/Projects/Clojure/ansicommonlisp-book-clojure/ch05/"
-                                    "classes"))
+                                    "~/Documents/Projects/Clojure/ansicommonlisp-book-clojure/ch05"
+                                    "~/Documents/Projects/Clojure/ansicommonlisp-book-clojure/ch05/classes"
+                                    ))
 
 ;; global bindings
 (global-set-key [C-tab] 'other-window)
@@ -69,7 +81,7 @@
              (,(kbd "\r") paredit-newline)
              ;(,(kbd "<C-left>") paredit-forward-barf-sexp)
              ;(,(kbd "<C-right>") paredit-forward-slurp-sexp))
-           ))))
+             ))))
 
 ;; (define-key slime-mode-map "\M-\C-a" 'slime-beginning-of-defun)
 ;; (define-key slime-mode-map "\M-\C-e" 'slime-end-of-defun)
