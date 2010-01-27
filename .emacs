@@ -62,10 +62,14 @@
 
 ;; Slime
 (eval-after-load "slime"
-   '(progn (slime-setup '(slime-repl))))
+   '(progn (slime-setup '(slime-repl))
+           ;; define <return> as paredit-newline, just type C-<return>
+           ;; to evaluate the expression
+           (define-key slime-repl-mode-map (kbd "<return>") 'paredit-newline)))
+
 (add-to-list 'load-path "/opt/slime")
 (require 'slime)
-(slime-setup)
+;; (slime-setup)
 
 ;; Adding sbcl to Slime
 (add-to-list 'slime-lisp-implementations '(sbcl ("sbcl")))
