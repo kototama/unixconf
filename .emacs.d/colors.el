@@ -18,7 +18,10 @@
   (set-foreground-color "wheat")
   (set-background-color "black")
   (set-face-foreground 'default "wheat")
-  (set-face-background 'default "black"))
+  (set-face-background 'default "black")
+;  (set-face-foreground 'region "black")
+;  (set-face-background 'region "black")
+  )
 (defun faces_nox ()
   ;; these are used when in terminal
   (custom-set-faces
@@ -39,5 +42,6 @@
 
 (if window-system
     (faces_x)
-    (faces_nox))
+  ;;(faces_nox))
+  )
 
