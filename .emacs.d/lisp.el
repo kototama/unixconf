@@ -1,26 +1,11 @@
-;; clojure-mode
-;; git clone git://github.com/jochu/clojure-mode.git 
-;; commit a84397a018cbf5ad90c5095620e80a338641330d
-;;
-;;
-;; swank-clojure
-;; git clone git://github.com/jochu/swank-clojure.git 
-;; commit da6cb50944ba95940559a249c9659f71747312fb
-
-;; slime 
-;; git clone git://git.boinkor.net/slime.git
-;; commit 56f48a110dc0058b7717242b5aea3365a117e0e5
-
-(add-to-list 'load-path "/opt/slime/")
-(add-to-list 'load-path "/opt/slime/contrib/")
-(add-to-list 'load-path "/opt/clojure-mode/")
-(add-to-list 'load-path "/opt/swank-clojure/")
-(add-to-list 'load-path "/opt/paredit/")
-;(add-to-list 'load-path "/opt/quack/")
-(add-to-list 'load-path "/opt/emacs-modes/")
-; (add-to-list 'load-path "/opt/parenface/")
-;(add-to-list 'load-path "/opt/rainbow-parens/") TOO SLOW!
-;(add-to-list 'load-path "/opt/highlight-parentheses/") ;; buggy
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib/")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/clojure-mode/")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/swank-clojure/")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/paredit/")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/highlight-80+/")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/auto-complete/")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/misc/")
 
 ;; Customize swank-clojure start-up to reflect possible classpath changes
 ;; M-x ielm `slime-lisp-implementations RET or see `swank-clojure.el'
@@ -33,14 +18,21 @@
 (require 'slime)
 (require 'slime-repl)
 (require 'paredit)
+(require 'elein)
+(require 'highlight-80+)
+(require 'durendal)
 (require 'clojure-mode)
 (require 'swank-clojure)
+(require 'auto-complete)
+(require 'ac-slime)
+(require 'swank-clojure-extra)
 
-;(require 'quack)
-(require 'highlight-80+)
-;(require 'rainbow-parens)
-; (require 'highlight-parentheses)
-; (require 'parenface)
+(setq inferior-lisp-program "cd /home/pal/Documents/Projects/carneades/src/CarneadesEditor ; lein swank")
+
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-mode-hook 'slime-redirect-inferior-output)
+
+(setq slime-protocol-version 'ignore)
 
 ;(set-face-foreground 'paren-face "blue4")
 (setq hl-paren-colors
@@ -63,6 +55,22 @@
 	  (add-hook hook (lambda () (paredit-mode +1)))))
       '(emacs-lisp scheme lisp inferior-lisp inferior-scheme clojure slime
                    slime-repl))
+
+;; define lein-swank command
+;; (defun lein-swank ()
+;;   (interactive)
+;;   (let ((root (locate-dominating-file default-directory "project.clj")))
+;;     (when (not root)
+;;       (error "Not in a Leiningen project."))
+;;     ;; you can customize slime-port using .dir-locals.el
+;;     (shell-command (format "cd %s && lein swank %s &" root slime-port)
+;;                    "*lein-swank*")
+;;     (set-process-filter (get-buffer-process "*lein-swank*")
+;;                         (lambda (process output)
+;;                           (when (string-match "Connection opened on" output)
+;;                             (slime-connect "localhost" slime-port)
+;;                             (set-process-filter process nil))))
+;;     (message "Starting swank server...")))
 
 (eval-after-load "slime"
   '(progn
@@ -92,11 +100,8 @@
      ))
 
 (add-hook 'slime-repl-mode-hook '(lambda ()
-                                   (paredit-mode t)))
-
-(add-hook 'clojure-mode-hook
-          '(lambda ()
-             (define-key clojure-mode-map (kbd "<f7>") 'swank-clojure-project)))
+                                   (paredit-mode t)
+                                   (clojure-mode-font-lock-setup)))
 
 ;; By default inputs and results have the same color
 ;; Customize result color to differentiate them
@@ -112,13 +117,13 @@
       'swank-clojure-slime-repl-modify-syntax t)
     ;; Add classpath for Incanter (just an example)
     ;; The preferred way to set classpath is to use swank-clojure-project
-
-    (add-to-list 'swank-clojure-classpath 
-                 "/opt/clojure/clojure.jar")
-    (add-to-list 'swank-clojure-classpath 
-                 "/opt/clojure-contrib/clojure-contrib.jar")
-    (add-to-list 'swank-clojure-classpath 
-             "/opt/swank-clojure/src/")))
+                                        ;(add-to-list 'swank-clojure-classpath 
+     ;            "~/Documents/Projects/carneades/trunk/clojure/Carneades/src/")
+    ;(add-to-list 'swank-clojure-classpath 
+     ;            "~/Documents/Projects/carneades/trunk/clojure/Carneades/lib/jgraphx.jar")
+    ;(add-to-list 'swank-clojure-classpath 
+     ;            "~/Documents/Projects/carneades/trunk/clojure/Carneades/test/"))
+    ))
 
 (add-hook 'paredit-mode-hook
           (lambda ()
@@ -142,12 +147,16 @@
 (add-hook 'inferior-scheme-mode-hook
           (lambda ()
             (define-key inferior-scheme-mode-map (kbd "<C-return>")
-              'comint-send-input)
-            ))
+              'comint-send-input)))
 
 (add-hook 'clojure-mode-hook
           (lambda ()
-            (highlight-80+-mode t)))
+            (durendal-enable-auto-compile)
+            (define-key clojure-mode-map (kbd "<f2>") 'elein-swank)
+            (define-key clojure-mode-map (kbd "<f3>") 'elein-swank)
+            (define-key clojure-mode-map (kbd "<f7>") 'swank-clojure-project)
+            (highlight-80+-mode t)
+            (auto-complete-mode t)))
 
 (add-hook 'lisp-interaction-mode-hook
           (lambda ()

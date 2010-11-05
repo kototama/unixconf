@@ -5,20 +5,33 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
- '(quack-fontify-style nil)
- '(quack-pretty-lambda-p nil)
  '(show-paren-mode t)
  '(tool-bar-mode nil)
  '(transient-mark-mode t))
 
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/git-emacs")
 (load-file "~/.emacs.d/colors.el")
 (load-file "~/.emacs.d/lisp.el")
-(load-file "/opt/emacs-modes/tabbar.el")
-(load-file "/opt/emacs-modes/igrep.el")
+
+;; (require 'git-emacs)
+(require 'git-emacs)
+(require 'git-status)
+(require 'smart-tab)
+(require 'tabbar)
+(require 'igrep)
+
+;; default modes
+(iswitchb-mode t)
+(icomplete-mode t)
+(column-number-mode t)
+(ido-mode t)
+(tabbar-mode t)
+(winner-mode t)
 
 ;; fonts
 (if (eq window-system 'x)
-    (set-default-font "Inconsolata-14"))
+    (set-default-font "Inconsolata-12"))
 
 ;; no tabs, spaces instead!
 (setq-default indent-tabs-mode nil)
@@ -26,15 +39,7 @@
 ;; Changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; default modes
-;(iswitchb-mode)
-(column-number-mode)
-(ido-mode)
-(tabbar-mode)
-(winner-mode)
-
 ;; ido-mode
-
 ;; do not confirm file creation
 (setq confirm-nonexistent-file-or-buffer nil)
 
@@ -69,6 +74,14 @@
 ;; save backup files in this directory
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
 
+;; smart tab completion
+(smart-tab 1)
+
+(setq smart-tab-completion-functions-alist
+      '((emacs-lisp-mode . lisp-complete-symbol)
+        (text-mode . dabbrev-completion) ;; this is the "default" emacs expansion function
+        (clojure-mode . slime-complete-symbol))) ;; see update below
+
 ;; global bindings
 (global-set-key [C-tab] 'other-window)
 (global-set-key "\r" 'newline-and-indent)
@@ -78,6 +91,7 @@
                                 (split-window-vertically 25)
                                 (other-window 1)
                                 (slime)))
+
 ; switch buffer with last previous buffer
 (global-set-key (kbd "<C-return>") '(lambda ()
                                       (interactive)
@@ -88,31 +102,32 @@
 (global-set-key (kbd "C-<prior>") 'tabbar-forward)
 (global-set-key (kbd "C-<next>") 'tabbar-backward)
 
-;; (define-key slime-mode-map "\M-\C-a" 'slime-beginning-of-defun)
-;; (define-key slime-mode-map "\M-\C-e" 'slime-end-of-defun)
-;; (define-key slime-mode-map "\C-c\M-q" 'slime-reindent-defun)
-;; (global-set-key "\C-c\C-q" 'slime-close-all-parens-in-sexp)
-;; (global-set-key "\C-]" 'slime-close-all-parens-in-sexp)
+;; fullscreen on F11
+(defun toggle-fullscreen (&optional f)
+  (interactive)
+  (let ((current-value (frame-parameter nil 'fullscreen)))
+    (set-frame-parameter nil 'fullscreen
+                         (if (equal 'fullboth current-value)
+                             (if (boundp 'old-fullscreen) old-fullscreen nil)
+                           (progn (setq old-fullscreen current-value)
+                                  'fullboth)))))
+
+(global-set-key [f11] 'toggle-fullscreen)
+
+                                        ; Make new frames fullscreen by default. Note: this hook doesn't do
+                                        ; anything to the initial frame if it's in your .emacs, since that file is
+                                        ; read _after_ the initial frame is created.
+(add-hook 'after-make-frame-functions 'toggle-fullscreen)
 
 (if (window-system)
   (set-frame-height (selected-frame) 60))
 
-;; (custom-set-faces
-;;   ;; custom-set-faces was added by Custom.
-;;   ;; If you edit it by hand, you could mess it up, so be careful.
-;;   ;; Your init file should contain only one such instance.
-;;   ;; If there is more than one, they won't work right.
-;;  '(default ((t (:foreground "wheat" :background "black"))))
-;;  '(flyspell-duplicate ((t (:foreground "Gold3" :underline t :weight normal))))
-;;  '(flyspell-incorrect ((t (:foreground "OrangeRed" :underline t :weight normal))))
-;;  '(font-lock-comment-face ((t (:foreground "SteelBlue1"))))
-;;  '(font-lock-function-name-face ((t (:foreground "gold"))))
-;;  '(font-lock-keyword-face ((t (:foreground "springgreen"))))
-;;  '(font-lock-type-face ((t (:foreground "PaleGreen"))))
-;;  '(font-lock-variable-name-face ((t (:foreground "Coral"))))
-;;  '(menu ((((type x-toolkit)) (:background "light slate gray" :foreground "wheat" :box (:line-width 2 :color "grey75" :style released-button)))))
-;;  '(mode-line ((t (:foreground "black" :background "light slate gray"))))
-;;  '(slime-repl-result-face ((t (:foreground "orange"))))
-;;  '(tabbar-default ((t (:inherit variable-pitch :background "gray75" :foreground "grey75" :height 0.8))))
-;;  '(tabbar-unselected ((t (:inherit tabbar-default :foreground "black" :box (:line-width 1 :color "white" :style released-button)))))
-;;  '(tool-bar ((((type x w32 mac) (class color)) (:background "midnight blue" :foreground "wheat" :box (:line-width 1 :style released-button))))))
+(put 'downcase-region 'disabled nil)
+
+;; macro to split the screen in three part with eshell in bottom right corner:
+;; can be call with M-x splitscreen
+(fset 'splitscreen
+   [?\C-x ?3 ?\C-x ?o ?\C-x ?2 ?\C-x ?o ?\M-x ?e ?s ?h ?e ?l ?l return])
+
+;; starts emacs server
+(server-start)

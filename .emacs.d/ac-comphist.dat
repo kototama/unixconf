@@ -1,0 +1,178 @@
+((("node" .
+   [1 0 0 0])
+  (":else" .
+   [1 0 0 0 0])
+  ("stmt" .
+   [1 0 0 0])
+  ("stmt-info" .
+   [1 0 0 0 0 0 0 0 0])
+  ("previous-content-as-obj" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 2 0 0 0])
+  ("oldag" .
+   [3 0 0 0 0])
+  ("do-edit-statement" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("if" .
+   [2 0])
+  ("previous-content" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("recur" .
+   [2 0 0 0 0])
+  ("loop" .
+   [2 0 0 0])
+  ("sexp" .
+   [2 0 0 0])
+  ("statement?" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("when" .
+   [3 0 0 0])
+  ("nil" .
+   [2 0 0])
+  ("try" .
+   [1 0 0])
+  ("fletter" .
+   [2 0 0 0 0 0 0])
+  ("let" .
+   [2 0 0])
+  ("newcontent" .
+   [5 0 1 0 0 0 0 0 0 0])
+  ("str-to-stmt" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("statement" .
+   [0 0 0 0 0 1 0 0 0])
+  ("stmtstr-to-code" .
+   [0 0 0 0 0 0 0 1 1 0 0 0 0 0 0])
+  ("read-string" .
+   [0 0 0 0 0 1 1 0 0 0 0])
+  ("content" .
+   [13 0 0 0 0 0 0])
+  ("defn-" .
+   [1 0 0 0 0])
+  ("on" .
+   [3 0])
+  ("info" .
+   [2 0 0 0])
+  ("on-edit-statement" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("current-graph" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("id" .
+   [1 0])
+  (".setLabelsClipped" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("mxGraph." .
+   [1 0 0 0 0 0 0 0])
+  ("getLabel" .
+   [1 0 0 0 0 0 0 0])
+  ("proxy-super" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("wrap" .
+   [1 0 0 0])
+  ("20" .
+   [1 0])
+  (".getWidth" .
+   [1 0 0 0 0 0 0 0 0])
+  (".getState" .
+   [1 0 0 0 0 0 0 0 0])
+  ("state" .
+   [2 0 0 0 0])
+  ("cell" .
+   [3 0 0 0])
+  ("mxGraph" .
+   [1 0 0 0 0 0 0])
+  ("proxy" .
+   [1 0 0 0 0])
+  (".setHtmlLabels" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("mxConstants/STYLE_OVERFLOW" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("deref" .
+   [5 0 0 0 0])
+  ("do-swing-and-wait" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("future" .
+   [1 0 0 0 0 0])
+  ("defvar-" .
+   [1 0 0 0 0 0 0])
+  ("*searching-positions*" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("defvar" .
+   [1 0 0 0 0 0])
+  (":import" .
+   [1 0 0 0 0 0 0])
+  ("print" .
+   [1 0 0 0 0])
+  ("on-post-goalwizard" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("statement-formatted" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("view" .
+   [12 0 0 0])
+  ("path" .
+   [5 0 0 0])
+  ("get-ag" .
+   [1 0 0 0 0 0])
+  ("when-let" .
+   [2 0 0 0 0 0 0 0])
+  ("carneades.editor.controller.handlers" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("carneades.editor.view.application.editorview" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("swingui" .
+   [1 0 0 0 0 0 0])
+  ("editor" .
+   [1 0 0 0 0 0])
+  ("first" .
+   [3 0 0 0 0])
+  ("str" .
+   [3 0 0])
+  ("FileOutputStream" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("filename" .
+   [1 0 0 0 0 0 0 0])
+  ("encoding" .
+   [1 0 0 0 0 0 0 0])
+  ("doto" .
+   [1 0 0 0])
+  ("os.close" .
+   [0 0 1 0 0 0 0 0])
+  ("carneades.editor.utils.swing" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("remove-action-listeners" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("apply" .
+   [1 0 0 0 0])
+  ("clojure.contrib.swing-utils" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("args" .
+   [1 0 0 0])
+  ("*previousPositionButton*" .
+   [0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("*firstPsitionButton*" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("event" .
+   [2 0 0 0 0])
+  ("prn" .
+   [7 0 0])
+  ("defn" .
+   [2 0 0 0])
+  ("clojure.contrib.def" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("*positions*" .
+   [5 0 0 0 0 0 0 0 0 0 0])
+  ("atom" .
+   [2 0 0 0])
+  ("reset!" .
+   [1 0 0 0 0 0])
+  ("positions" .
+   [10 0 0 0 0 0 0 0 0])
+  ("reset-position" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("and" .
+   [3 0 0])
+  ("not" .
+   [1 0 0])
+  ("nil?" .
+   [5 0 0 0])
+  ("*position*" .
+   [0 0 0 0 0 1 0 0 0 0])))
