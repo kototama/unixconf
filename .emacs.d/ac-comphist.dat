@@ -1,9 +1,685 @@
-((("node" .
-   [1 0 0 0])
-  (":else" .
+((("ns" .
+   [1 0])
+  (":nodes-selections" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("keys-to-store" .
+   [1 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("keys" .
+   [2 0 0 0])
+  ("update" .
+   [1 0 0 0 0 0])
+  ("replace-current-state" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":xmldoc" .
+   [1 0 0 0 0 0 0])
+  ("graphview" .
+   [1 0 0 0 0 0 0 0 0])
+  ("edges" .
    [1 0 0 0 0])
-  ("stmt" .
+  ("restore-state" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("vals" .
    [1 0 0 0])
+  ("can-redo?" .
+   [0 0 0 0 0 0 0 0 1])
+  ("can-undo?" .
+   [0 0 0 0 0 0 0 0 1])
+  ("edit" .
+   [1 0 0 0])
+  ("compound-edit" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("compedit" .
+   [2 0 0 0 0 0 0 0])
+  ("add-state-edit" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("edit2" .
+   [2 0 0 0 0])
+  (":history" .
+   [7 0 0 0 0 0 0 0])
+  ("dissoc" .
+   [3 0 0 0 0 0])
+  ("newstate" .
+   [1 0 0 0 0 0 0 0])
+  ("current-state" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("edit3" .
+   [1 0 0 0 0])
+  ("graphstate" .
+   [3 0 0 0 0 0 0 0 0 0])
+  ("history" .
+   [11 0 0 0 0 0 0])
+  ("simplehistory" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("tikkba.apps.svgbrowser" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("create-edit" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("redo-state" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("toredo" .
+   [2 0 0 0 0 0])
+  ("undo-state" .
+   [1 0 0 0 0 1 0 0 0 0])
+  ("toundo" .
+   [2 0 0 0 0 0])
+  ("add-state" .
+   [3 0 0 0 0 0 0 0 0])
+  ("atom-history" .
+   [3 0 0 0 0 0 0 0 0 0 0 0])
+  ("atom-state" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("todo" .
+   [2 0 0 0])
+  ("command" .
+   [3 0 0 0 0 0 0])
+  ("HistoryBrowser$CommandController" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("HistoryBrowser" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("wrapper" .
+   [1 0 0 0 0 0 0])
+  ("300" .
+   [1 0 0])
+  ("rand-int" .
+   [2 0 0 0 0 0 0 0])
+  ("nodeid" .
+   [2 0 0 0 0 0])
+  ("*graph*" .
+   [3 0 0 0 0 0 0])
+  (":listeners" .
+   [4 0 0 0 0 0 0 0 0 0])
+  ("get-in" .
+   [2 0 0 0 0 0])
+  ("listeners" .
+   [16 0 0 0 0 0 0 0 0])
+  ("node-view" .
+   [3 0 0 0 0 0 0 0 0])
+  ("do-swing" .
+   [1 0 0 0 0 0 0 0])
+  ("svgcanvas" .
+   [3 0 0 0 0 0 0 0 0])
+  ("can" .
+   [1 0 0])
+  ("node-view-factory" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("node-styles" .
+   [4 0 0 0 0 0 0 0 0 0 0])
+  ("node-attrs" .
+   [3 0 0 0 0 0 0 0 0 0])
+  ("create-node" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("params" .
+   [9 0 0 0 0 0])
+  ("800" .
+   [1 0 0])
+  ("call" .
+   [0 0 1 0])
+  ("jsvgcanvas" .
+   [0 0 0 0 1 0 0 0 0 0])
+  ("node-elements" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("context" .
+   [4 0 0 0 0 0 0])
+  ("svg" .
+   [8 0 0])
+  ("swing" .
+   [1 0 0 0 0])
+  (".pack" .
+   [1 0 0 0 0])
+  ("JFrame." .
+   [3 0 0 0 0 0 0])
+  (".getContentPane" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("pane" .
+   [2 0 0 0])
+  ("create-frame" .
+   [6 0 0 0 0 0 0 0 0 0 0 0])
+  ("clojure.contribs.swing-utils" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("Thread/sleep" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("500" .
+   [2 0 0])
+  (".." .
+   [1 0])
+  ("xmldoc" .
+   [5 0 0 0 0 0])
+  ("finished" .
+   [3 0 0 0 0 0 0 0])
+  (":ry" .
+   [1 0 0])
+  (":rx" .
+   [1 0 0])
+  (":stroke-dasharray" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  (":perseus" .
+   [1 0 0 0 0 0 0 0])
+  (":zeus" .
+   [2 0 0 0 0])
+  (":epaphus" .
+   [1 0 0 0 0 0 0 0])
+  ("250" .
+   [2 0 0])
+  (":stroke-width" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("add-edge-label" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":father2" .
+   [2 0 0 0 0 0 0 0])
+  (":stroke" .
+   [4 0 0 0 0 0 0])
+  (":fill" .
+   [4 0 0 0 0])
+  (":style" .
+   [3 0 0 0 0 0])
+  ("edgelabelview" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":label" .
+   [1 0 0 0 0 0])
+  ("writer" .
+   [2 0 0 0 0 0])
+  ("with-open" .
+   [1 0 0 0 0 0 0 0 0])
+  ("jio/writer" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("write" .
+   [1 0 0 0 0])
+  ("options" .
+   [3 0 0 0 0 0 0])
+  ("result" .
+   [1 0 0 0 0 0])
+  ("src" .
+   [1 0 0])
+  ("xformer" .
+   [2 0 0 0 0 0 0])
+  (":svg" .
+   [3 0 0 0])
+  ("curves" .
+   [1 0 0 0 0 0])
+  ("tikkba.dom" .
+   [0 0 0 0 0 0 0 1 0 0])
+  ("svg-doc" .
+   [1 0 0 0 0 0 0])
+  ("svg-dom" .
+   [1 0 0 0 0 0 0])
+  ("analemma-data" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("600" .
+   [2 0 0])
+  (".setSize" .
+   [1 0 0 0 0 1 0 0])
+  ("add-svg-load-event-dispatcher-listener" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("frame" .
+   [11 0 0 0 0])
+  ("-main" .
+   [1 0 0 0 0])
+  ("xml" .
+   [1 0 0])
+  ("set-document" .
+   [2 0 0 0 0 0 0 0 0 0 0 0])
+  ("dom" .
+   [4 0 0])
+  ("tree" .
+   [1 0 0 0])
+  ("elt" .
+   [4 0 0])
+  ("doc" .
+   [14 0 0])
+  ("tag" .
+   [2 0 0])
+  ("document" .
+   [1 0 0 0 0 0 0 0])
+  ("saved-results" .
+   [1 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("not-saved" .
+   [2 0 0 0 0 0 0 0 0])
+  ("m-let" .
+   [2 0 0 0 0])
+  ("rec-imps" .
+   [1 0 0 0 0 0 0 0])
+  ("new-i-ags" .
+   [1 0 0 0 0 0 0 0 0])
+  ("max-size" .
+   [2 0 0 0 0 0 0 0])
+  ("len" .
+   [2 0 0])
+  ("descs" .
+   [1 0 0 0 0])
+  ("set-filter-text-listener" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("display" .
+   [1 0 0 0 0 0 0])
+  ("defprotocol" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("dispatchEvent" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("EventQueue" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("toolkit" .
+   [1 0 0 0 0 0 0])
+  (":formulars" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("validate" .
+   [1 0 0 0 0 0 0 0])
+  ("vars" .
+   [3 0 0 0])
+  ("suggestions" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("formulars" .
+   [2 0 0 0 0 0 0 0 0])
+  ("use-suggestion" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":formid" .
+   [1 0 0 0 0 0 0])
+  (":suggestions" .
+   [2 0 0 0 0 0 0 0 0 0 0 0])
+  ("state-atom" .
+   [6 0 0 0 0 0 0 0 0 0])
+  (":current-substitution" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0])
+  ("current-substitution" .
+   [4 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0])
+  (":settings" .
+   [2 0 0 0 0 0 0 0 0])
+  ("state-call" .
+   [3 0 0 0 0 0 0 0 0 0])
+  ("sols" .
+   [1 0 0 0])
+  ("type-str" .
+   [1 0 0 0 0 0 0 0])
+  (":string" .
+   [1 0 0 0 0 0 0])
+  ("props" .
+   [3 0 0 0 0])
+  ("type" .
+   [11 0 0 0])
+  (":type" .
+   [2 0 0 0 0])
+  (":name" .
+   [1 0 0 0 0])
+  (":value" .
+   [2 0 0 0 0 0])
+  ("into" .
+   [1 0 0 0])
+  ("carneades.config.reader" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":require" .
+   [2 0 0 0 0 0 0 0])
+  ("merge" .
+   [2 0 0 0 0])
+  ("*default-values*" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("*properties-path*" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("default-values" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("fileproperties" .
+   [1 0 0 0 0 0 0 0 4 1 1 0 0 0])
+  ("remove-meta-data" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("str-type" .
+   [1 0 0 0 0 0 0 0])
+  ("extract-meta-data" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("property" .
+   [4 0 0 0 0 0 0 0])
+  ("properties" .
+   [13 0 0 0 0 0 0 0 0 0])
+  (":directory" .
+   [3 0 0 0 0 0 0 0 0 0])
+  (":file" .
+   [4 0 0 0 0])
+  ("read-properties" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("on-save" .
+   [1 0 0 0 0 0 0])
+  ("unsavedlkifs" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("*docmanager*" .
+   [0 0 0 0 0 1 0 1 0 0 0 0])
+  ("mark-saved" .
+   [0 0 0 0 0 0 1 0 0 0])
+  ("restore-to-last-saved" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("savechanges" .
+   [0 0 0 0 0 0 1 0 0 0 0])
+  (":ags" .
+   [4 0 0 0])
+  ("do-update-section" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("is-ag-dirty" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("get-ags-id" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("do-open-content" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("oldpath" .
+   [2 0 0 0 0 0 0])
+  ("File." .
+   [2 0 0 0 0])
+  ("close-all" .
+   [1 0 0 0 0 0 0 0 0])
+  ("file" .
+   [21 0 0 0])
+  ("do-open-file" .
+   [3 0 0 0 0 0 0 0 0 0 0 0])
+  ("ask-file-to-save" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("close" .
+   [1 0 0 0 0])
+  ("deftrace" .
+   [1 0 0 0 0 0 0 0])
+  ("do-close-graph" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("save-lkif" .
+   [2 0 0 0 0 0 0 0 0])
+  ("values" .
+   [2 0 0 0 0 0])
+  ("var-values" .
+   [4 0 0 0 0 0 0 0 0 0])
+  ("identity" .
+   [1 0 0 0 0 0 0 0])
+  ("current-subs" .
+   [3 0 0 0 0 0 0 3 0 0 0 0])
+  ("*formulars*" .
+   [0 0 0 0 1 0 0 0 0 0 0])
+  ("fillin-formular" .
+   [1 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("printf" .
+   [11 0 0 0 0 0])
+  ("form-listener" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("value" .
+   [10 0 0 0 0])
+  ("formular" .
+   [1 0 0 0 0 0 0 0])
+  ("hash-map" .
+   [5 0 0 0 0 0 0 0])
+  ("concat" .
+   [6 0 0 0 0 0])
+  ("ground?" .
+   [1 0 0 0 0 0 0])
+  ("sub" .
+   [2 0 0])
+  ("apply-substitution" .
+   [0 0 0 0 0 0 0 1 3 0 0 0 0 0 0 0 0 0])
+  ("formvariables" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("val" .
+   [4 0 0])
+  ("var" .
+   [4 0 0])
+  ("conclusion-matches" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("*conclusion-matches*" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("conclusion" .
+   [7 0 0 0 0 1 0 0 0 0])
+  ("*conclusion*" .
+   [1 0 0 0 0 1 0 0 0 0 0 0])
+  ("scheme" .
+   [6 0 0 0 0 0])
+  ("*current-substitution*" .
+   [0 0 0 1 1 3 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("rules" .
+   [2 0 0 0 0])
+  ("conclusionmatches" .
+   [1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("partition" .
+   [1 0 0 0 0 0 0 0 0])
+  ("in" .
+   [3 0])
+  ("val-values" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("variables" .
+   [3 0 0 0 0 0 0 0 0])
+  ("create-literal-validator" .
+   [1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("reset" .
+   [1 0 0 0 0])
+  ("literal-nb" .
+   [4 0 0 0 0 0 0 0 0 0])
+  ("format" .
+   [1 0 0 0 0 0])
+  ("idx" .
+   [10 0 1])
+  ("map" .
+   [9 0 0])
+  ("forms" .
+   [3 0 0 0 0])
+  ("fn" .
+   [15 0])
+  ("reduce" .
+   [5 0 0 0 0 0])
+  ("get-literal-formular" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("gen-form-id" .
+   [0 0 0 0 0 0 0 1 0 0 0])
+  ("formid" .
+   [11 0 0 0 0 0])
+  ("form" .
+   [21 0 0 0])
+  ("suffix" .
+   [1 0 0 0 0 0])
+  ("create-literal-formular" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (".addWizardObserver" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("create-wizardobserver" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("wizardpages" .
+   [4 0 0 0 0 0 0 0 0 0 0])
+  ("LiteralPanel." .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("*literalPanel*" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("pagedata" .
+   [1 0 0 0 0 0 0 0])
+  (":id" .
+   [2 0 0])
+  ("clauses" .
+   [18 0 0 0 0 0 0])
+  ("schemes-panel" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("desc" .
+   [1 0 0 0])
+  ("textfield2" .
+   [1 0 0 0 0 0 0 0 0 0])
+  (".setName" .
+   [1 0 0 0 0 0 0 0])
+  (".textField" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("textfield" .
+   [2 0 0 0 0 0 0 0 0])
+  ("page2" .
+   [2 0 0 0 0])
+  ("label2" .
+   [1 0 0 0 0 0])
+  ("Clauses" .
+   [1 0 0 0 0 0 0])
+  ("panel2" .
+   [3 0 0 0 0 0])
+  ("create-literalwizard" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("LiteralPanel" .
+   [1 0 0 0 1 0 0 0 0 0 0 0])
+  (".label" .
+   [2 0 0 0 0 0])
+  ("label" .
+   [2 0 0 0 0])
+  ("panel" .
+   [13 0 0 0 0])
+  (".setText" .
+   [2 0 0 0 1 0 0 0])
+  ("create-clausewizard" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("stepid" .
+   [10 0 0 0 0 0])
+  ("Scheme" .
+   [0 0 0 0 1 0])
+  (".getStepDescription" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("stepdesc" .
+   [2 0 0 0 0 0 0 0])
+  ("createWizard" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("ClausesPanel." .
+   [1 0 2 0 0 0 0 0 0 0 0 0 0])
+  ("Clause" .
+   [0 0 1 1 0 0])
+  ("*clauses-wizard*" .
+   [0 0 0 2 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("def" .
+   [3 0 0])
+  ("getWizardForStep" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("into-array" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("SchemesPanel." .
+   [0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("page" .
+   [5 0 0 0])
+  (".add" .
+   [4 0 0 0])
+  ("WizardPage" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("create-basepages" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("WizardBranchController" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("create-brancher" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("brancher" .
+   [2 0 0 0 0 0 0 0])
+  (".createWizard" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("create-wizard" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("wizard" .
+   [15 0 0 0 0 0])
+  ("WizardDisplayer/showWizard" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("minimize" .
+   [2 0 0 0 0 0 0 0])
+  ("count" .
+   [6 0 0 0 0])
+  ("make-minimal" .
+   [2 0 0 0 0 0 1 0 0 0 0 0])
+  ("get-minimize-value" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("set-minimize-button-listener" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("*minimizePositionsButton*" .
+   [0 0 0 0 2 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("add-action-listener" .
+   [0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("this" .
+   [38 0 0 0])
+  ("*sortByComboBox*" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  (".setSelectedIndex" .
+   [0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0])
+  ("vector" .
+   [3 0 0 0 0 0])
+  ("position" .
+   [1 0 0 0 0 0 0 0])
+  (":npos" .
+   [2 0 0 0 0])
+  (":index" .
+   [5 0 0 0 0 0])
+  (":positions" .
+   [3 0 0 0 0 0 0 0 0 0])
+  ("swap!" .
+   [21 0 0 0 0])
+  (".getSelectedValue" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("search" .
+   [1 0 0 0 0 0])
+  ("generators" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("strategy" .
+   [4 0 0 0 0 0 0 0])
+  (":only" .
+   [2 0 0 0 0])
+  ("carneades.engine.search" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("breadth-first" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("depth-first" .
+   [3 0 0 0 0 0 0 0 0 0 0])
+  ("case" .
+   [2 0 0 0])
+  ("condp" .
+   [7 0 0 0 0])
+  ("display-statement" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":title" .
+   [2 0 0 0 0 0])
+  (":main-issue" .
+   [1 0 0 0 0 0 0 1 0 0 0])
+  ("assoc" .
+   [28 0 0 0 0])
+  ("so" .
+   [1 0])
+  ("max-nodes" .
+   [3 0 0 0 0 0 0 0 0])
+  ("ag2" .
+   [10 0 0])
+  ("new" .
+   [1 0 0])
+  (":arguments" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("empty?" .
+   [6 0 0 0 0 0])
+  ("solutions" .
+   [4 0 0 0 0 0 0 0 0])
+  ("settings" .
+   [36 0 1 0 0 0 0 0])
+  ("extract-lkif-from-docmanager" .
+   [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("carneades.editor.model.lkif-utils" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("carneades.engine.shell" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("50" .
+   [1 0])
+  ("max-turns" .
+   [6 0 0 0 0 0 0 0 0])
+  ("set" .
+   [2 0 0])
+  ("clojure.contrib.pprint" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("pprint" .
+   [28 0 0 0 0 0])
+  ("ag" .
+   [16 0])
+  ("lkif" .
+   [5 0 0 0])
+  ("lkifpath" .
+   [2 0 0 0 0 0 0 0])
+  ("gen-listeners-fns" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("arg" .
+   [4 0 0])
+  ("listener-var-name" .
+   [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("listener" .
+   [4 0 0 0 0 0 0 0])
+  ("register-fn-name" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("symbol" .
+   [3 0 0 0 0 0])
+  ("name" .
+   [14 0 0 0])
+  ("doseq" .
+   [6 0 5 0 0])
+  ("node" .
+   [7 0 0 0])
+  (":else" .
+   [4 0 0 0 0])
+  ("stmt" .
+   [4 0 0 0])
   ("stmt-info" .
    [1 0 0 0 0 0 0 0 0])
   ("previous-content-as-obj" .
@@ -13,7 +689,7 @@
   ("do-edit-statement" .
    [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
   ("if" .
-   [2 0])
+   [14 0])
   ("previous-content" .
    [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("recur" .
@@ -25,39 +701,39 @@
   ("statement?" .
    [1 0 0 0 0 0 0 0 0 0])
   ("when" .
-   [3 0 0 0])
+   [26 0 0 0])
   ("nil" .
-   [2 0 0])
+   [36 0 0])
   ("try" .
-   [1 0 0])
+   [5 0 0])
   ("fletter" .
    [2 0 0 0 0 0 0])
   ("let" .
-   [2 0 0])
+   [10 0 0])
   ("newcontent" .
    [5 0 1 0 0 0 0 0 0 0])
   ("str-to-stmt" .
    [2 0 0 0 0 0 0 0 0 0 0])
   ("statement" .
-   [0 0 0 0 0 1 0 0 0])
+   [4 0 0 0 0 2 0 0 0])
   ("stmtstr-to-code" .
    [0 0 0 0 0 0 0 1 1 0 0 0 0 0 0])
   ("read-string" .
    [0 0 0 0 0 1 1 0 0 0 0])
   ("content" .
-   [13 0 0 0 0 0 0])
+   [26 0 0 0 0 0 0])
   ("defn-" .
-   [1 0 0 0 0])
+   [5 0 0 0 0])
   ("on" .
-   [3 0])
+   [5 0])
   ("info" .
-   [2 0 0 0])
+   [3 0 0 0])
   ("on-edit-statement" .
    [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
   ("current-graph" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0])
+   [1 0 0 0 0 0 0 0 0 1 0 0 0])
   ("id" .
-   [1 0])
+   [53 0])
   (".setLabelsClipped" .
    [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
   ("mxGraph." .
@@ -65,7 +741,7 @@
   ("getLabel" .
    [1 0 0 0 0 0 0 0])
   ("proxy-super" .
-   [1 0 0 0 0 0 0 0 0 0 0])
+   [2 0 0 0 0 0 0 0 0 0 0])
   ("wrap" .
    [1 0 0 0])
   ("20" .
@@ -75,45 +751,45 @@
   (".getState" .
    [1 0 0 0 0 0 0 0 0])
   ("state" .
-   [2 0 0 0 0])
+   [26 0 0 0 0])
   ("cell" .
    [3 0 0 0])
   ("mxGraph" .
    [1 0 0 0 0 0 0])
   ("proxy" .
-   [1 0 0 0 0])
+   [6 0 0 0 0])
   (".setHtmlLabels" .
    [0 0 0 0 0 1 0 0 0 0 0 0 0 0])
   ("mxConstants/STYLE_OVERFLOW" .
    [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
   ("deref" .
-   [5 0 0 0 0])
+   [41 0 0 0 0])
   ("do-swing-and-wait" .
-   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+   [0 0 0 1 0 0 0 1 1 1 0 0 0 0 0 0 0])
   ("future" .
-   [1 0 0 0 0 0])
+   [2 0 0 0 0 0])
   ("defvar-" .
-   [1 0 0 0 0 0 0])
+   [15 0 0 0 0 0 0])
   ("*searching-positions*" .
    [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("defvar" .
-   [1 0 0 0 0 0])
+   [5 0 0 0 0 0])
   (":import" .
-   [1 0 0 0 0 0 0])
+   [2 0 0 0 0 0 0])
   ("print" .
-   [1 0 0 0 0])
+   [2 0 0 0 0])
   ("on-post-goalwizard" .
    [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
   ("statement-formatted" .
-   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+   [6 0 0 0 0 0 0 0 0 0 0 0 1 3 0 1 0 0 0])
   ("view" .
-   [12 0 0 0])
+   [78 0 0 0])
   ("path" .
-   [5 0 0 0])
+   [83 0 0 0])
   ("get-ag" .
-   [1 0 0 0 0 0])
+   [8 0 0 0 0 0])
   ("when-let" .
-   [2 0 0 0 0 0 0 0])
+   [9 0 0 0 0 0 0 0])
   ("carneades.editor.controller.handlers" .
    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
   ("carneades.editor.view.application.editorview" .
@@ -123,13 +799,13 @@
   ("editor" .
    [1 0 0 0 0 0])
   ("first" .
-   [3 0 0 0 0])
+   [14 0 0 0 0])
   ("str" .
-   [3 0 0])
+   [20 0 0])
   ("FileOutputStream" .
    [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
   ("filename" .
-   [1 0 0 0 0 0 0 0])
+   [2 0 0 0 0 0 0 0])
   ("encoding" .
    [1 0 0 0 0 0 0 0])
   ("doto" .
@@ -139,40 +815,516 @@
   ("carneades.editor.utils.swing" .
    [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
   ("remove-action-listeners" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
   ("apply" .
-   [1 0 0 0 0])
+   [19 0 0 0 0])
   ("clojure.contrib.swing-utils" .
-   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 0 0 0 0 0])
   ("args" .
-   [1 0 0 0])
+   [27 0 0 0])
   ("*previousPositionButton*" .
    [0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("*firstPsitionButton*" .
    [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
   ("event" .
-   [2 0 0 0 0])
+   [8 0 0 0 0])
   ("prn" .
-   [7 0 0])
+   [137 0 0])
   ("defn" .
-   [2 0 0 0])
+   [48 0 0 0])
   ("clojure.contrib.def" .
    [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("*positions*" .
    [5 0 0 0 0 0 0 0 0 0 0])
   ("atom" .
-   [2 0 0 0])
+   [12 0 0 0])
   ("reset!" .
-   [1 0 0 0 0 0])
+   [15 0 0 0 0 0])
   ("positions" .
-   [10 0 0 0 0 0 0 0 0])
+   [18 0 0 0 0 0 0 0 0])
   ("reset-position" .
    [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("and" .
-   [3 0 0])
+   [5 0 0])
   ("not" .
-   [1 0 0])
+   [6 0 0])
   ("nil?" .
-   [5 0 0 0])
+   [11 0 0 0])
   ("*position*" .
-   [0 0 0 0 0 1 0 0 0 0])))
+   [0 0 0 0 0 1 0 0 0 0])
+  ("on-pre-findarguments-wizard" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("goal" .
+   [4 0 0 0])
+  ("nbpos" .
+   [2 0 0 0 0])
+  ("*abductionPanel*" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("*cardLayout*" .
+   [0 0 1 0 0 0 0 0 0 0 0 0])
+  ("do" .
+   [25 0])
+  ("true" .
+   [25 0 0 0])
+  (":stopped" .
+   [5 0 0 0 0 0 0 0])
+  ("cond" .
+   [2 0 0 0])
+  ("or" .
+   [1 0])
+  (":running" .
+   [4 0 0 0 0 0 0 0])
+  (":stopping" .
+   [3 0 0 0 0 0 0 0 0])
+  ("*newag*" .
+   [1 0 0 0 1 0 0])
+  ("*search-future*" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("future-cancel" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("try-stop-search" .
+   [0 0 1 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("letfn" .
+   [4 0 0 0 0])
+  ("start-search" .
+   [2 0 0 0 0 0 1 0 0 0 0 0])
+  ("run-search" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("wait-for-search" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("*goal*" .
+   [1 0 0 0 0 0])
+  ("false" .
+   [16 0 0 0 0])
+  (":pre" .
+   [2 0 0 0])
+  ("clojure.string" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":rules" .
+   [1 0 0 0 0 0])
+  (":rb" .
+   [1 0 0])
+  ("get-lkif" .
+   [2 0 0 0 0 0 0 0])
+  ("filter" .
+   [13 0 0 0 0 0])
+  ("contains?" .
+   [2 0 0 0 0 0 0 0 0])
+  ("*fresh-ags*" .
+   [0 0 1 0 0 0 0 0 0 0 0])
+  ("if-let" .
+   [6 0 0 0 0 0])
+  ("conj" .
+   [5 0 0 0])
+  ("fresh" .
+   [3 0 0 0 0])
+  ("ids" .
+   [6 0 0])
+  ("disj" .
+   [1 0 0 0])
+  ("remove-fresh-ag" .
+   [0 0 0 0 0 0 0 0 0 0 2 0 0 0 0])
+  ("get-fresh-ag" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("get-fresh-ag-ids" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("pages" .
+   [7 0 0 0 0])
+  ("clauses-wizard" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("step" .
+   [7 0 0 0])
+  ("clause" .
+   [13 0 0 0 0 0])
+  ("display-clause" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":head" .
+   [2 0 0 0 0])
+  ("rule" .
+   [11 0 0 0])
+  ("nb-clauses" .
+   [1 0 0 0 0 0 1 0 0 0])
+  (":body" .
+   [3 0 0 0 0])
+  ("when-let*" .
+   [4 0 0 0 0 0 0 0 0])
+  ("carneades.editor.utils.core" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("index" .
+   [13 0 0 0 0])
+  ("dec" .
+   [2 0 0])
+  ("nclauses" .
+   [1 0 0 1 0 1 1 0])
+  ("pos?" .
+   [1 0 0 0])
+  ("*clauses*" .
+   [1 0 0 1 0 0 0 0 0])
+  ("inc" .
+   [2 0 0])
+  ("get-literal-wizard" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("clause-number" .
+   [11 0 0 0 0 0 0 0 0 1 0 0 0])
+  (":keys" .
+   [7 0 0 0 0])
+  ("literal" .
+   [20 0 0 0 0 0 0])
+  ("get-literal-panel" .
+   [0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0])
+  ("gensym" .
+   [3 0 0 0 0 0])
+  ("literals" .
+   [4 0 0 0 0 0 0 0])
+  (":panel" .
+   [2 0 0 0 0 0])
+  (":desc" .
+   [2 0 0 0 0])
+  ("constantly" .
+   [0 0 0 0 1 0 0 0 0 0])
+  ("*literal-wizards*" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("second" .
+   [3 0 0 0 0 0])
+  ("get-rule" .
+   [5 0 0 0 0 0 0 0])
+  ("get-scheme" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("get" .
+   [2 0 0])
+  ("Integer/parseInt" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("nth" .
+   [1 0 0])
+  ("head" .
+   [4 0 0 0])
+  ("body" .
+   [3 0 0 0])
+  ("create-argument" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("instantiate-scheme" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("viewprotocol" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("conclusion-stmt" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("update-statement" .
+   [1 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("argument" .
+   [2 0 0 0 0 0 0 0])
+  ("premise" .
+   [2 0 0 0 0 0 0])
+  ("premises" .
+   [3 0 0 0 0 0 0 0])
+  ("gen-argument-id" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  (":pro" .
+   [1 0 0 0])
+  ("assert-argument" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("10" .
+   [3 0])
+  (":listener" .
+   [1 0 0 0 0 0 0 0 0])
+  ("partial" .
+   [1 0 0 0 0 0 0])
+  ("on-literal-panel" .
+   [0 0 0 0 0 0 0 0 0 0 2 0 0 0 0 0])
+  ("logging" .
+   [1 0 0 0 0 0 0])
+  ("stream" .
+   [2 0 0 0 0 0])
+  ("trace" .
+   [2 0 0 0 0])
+  ("graph?" .
+   [1 0 0 0 0 0])
+  ("to" .
+   [2 0])
+  ("*rename*" .
+   [1 0 0 0 0 0 0 0])
+  ("update-undo-redo-statuses" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("set-lkif-dirty" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("opened" .
+   [2 0 0 0 0 0])
+  ("current" .
+   [1 0 0 0 0 0 0])
+  ("open" .
+   [1 0 0 0])
+  ("currentid" .
+   [1 0 0 0 0 0 0 0 0])
+  ("whenlets" .
+   [1 0 0 0 0 0 0 0])
+  ("defmacro" .
+   [1 0 0 0 0 0 0 0])
+  ("binding" .
+   [2 0 0 0 0 0 0])
+  (":use" .
+   [3 0 0 0])
+  ("carneades.editor.view.dialogs.properties" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0])
+  ("is" .
+   [1 0])
+  ("isfresh" .
+   [2 0 0 0 0 0 0])
+  ("remove-section" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("catch" .
+   [3 0 0 0 0])
+  ("dump-stack" .
+   [0 0 0 0 1 0 0 0 0 0])
+  (".getStackTrace" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("isnil" .
+   [2 0 0 0 0])
+  ("exists!" .
+   [0 0 0 0 0 0 1])
+  ("exists" .
+   [1 0 0 0 0 0])
+  ("condition-statement" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("condition" .
+   [0 0 0 0 0 0 0 1 0])
+  ("term-args" .
+   [1 0 0 0 0 0 0 0 0])
+  ("term" .
+   [1 0 0 0])
+  ("ontology" .
+   [4 0 0 0 0 0 0 0])
+  ("class-iri" .
+   [1 0 0 0 0 0 0 0 0])
+  ("owl/object-properties-seq" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("iri" .
+   [1 0 0])
+  ("individuals" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("ind" .
+   [7 0 0])
+  ("class-symbol" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("owl" .
+   [5 0 0])
+  ("mapcat" .
+   [3 0 0 0 0 0])
+  ("keep" .
+   [2 0 0 0])
+  ("individual" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("owl/data-properties-seq" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("prop" .
+   [1 0 0 0])
+  ("all" .
+   [1 0 0])
+  ("owl-symbol" .
+   [0 0 0 0 1 2 0 0 0 0])
+  ("reasoners" .
+   [1 0 0 0 0 0 0 0 0])
+  ("reasoner" .
+   [2 0 0 0 0 0 0 0])
+  ("nb-args" .
+   [1 0 0 0 0 0 0])
+  ("doall" .
+   [1 0 0 0 0])
+  ("reason" .
+   [1 0 0 0 0 0])
+  ("throw" .
+   [3 0 0 0 0])
+  ("IllegalArgumentException." .
+   [1 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (".getParent" .
+   [4 0 0 0 0 0 0 0 0 0])
+  ("when-not" .
+   [2 0 0 0 0 0 0 0])
+  ("lkif-path" .
+   [6 0 0 0 0 0 0 0 0])
+  ("lkif-parent" .
+   [3 0 0 0 0 0 0 0 0 0 0])
+  ("make-relative" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("relative-to" .
+   [5 0 0 0 0 0 0 0 0 0 0])
+  ("resolve-path" .
+   [5 0 0 0 0 0 0 0 0 0 0 0])
+  ("IllegalArgumentException" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("resolved" .
+   [12 0 0 0 0 0 0 0])
+  ("make-absolute" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  (".exists" .
+   [0 0 0 1 0 0 0])
+  (".getPath" .
+   [3 0 0 0 0 0 0 0])
+  ("java.io.File" .
+   [0 0 0 0 0 0 0 0 2 0 0 0])
+  ("relative" .
+   [4 0 0 0 0 0 0 0])
+  ("same-directory?" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("subs" .
+   [3 0 0 0])
+  ("dirsize" .
+   [3 0 0 0 0 0 0])
+  ("java.io.File/separator" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("carneades.engine.utils" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("add-import" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("i-path" .
+   [4 0 0 0 0 0])
+  ("relative-path" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":relative-path" .
+   [2 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("lkif-import" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("use" .
+   [2 0 0])
+  ("use-local-first" .
+   [0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("Exception." .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("in-directory?" .
+   [1 0 0 0 0 0 1 1 0 0 0 0 0])
+  ("location" .
+   [12 0 0 0 0 0 0 0])
+  ("parent" .
+   [2 0 0 0 0 0])
+  ("url?" .
+   [3 0 0 0])
+  ("absolute?" .
+   [1 0 0 0 0 0 0 0 0])
+  (":location" .
+   [2 0 0 0 0 0 0 0 0])
+  ("root-lkif-dir" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("import-lkif" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("xyz" .
+   [1 0 0])
+  ("get-argument-being-edited-info" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  (":doc" .
+   [5 0 0 0])
+  ("the" .
+   [1 0 0])
+  (":dev-dependencies" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("with" .
+   [1 0 0 0])
+  ("height" .
+   [1 0 0 0 0 0])
+  ("canvas" .
+   [20 0 0 0 0 0])
+  ("add-edge" .
+   [3 0 0 1 0 0 0 0])
+  ("add-node" .
+   [4 0 0 0 0 0 0 0])
+  (":id1" .
+   [1 0 0 0])
+  (":id2" .
+   [1 0 0 0])
+  (":hermes" .
+   [1 0 0 0 0 0 0])
+  (":ares" .
+   [1 0 0 0 0])
+  ("build" .
+   [2 0 0 0 0])
+  ("x-add-edge" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("add-edge-kv" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("add-edge-kv!" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  (":athena" .
+   [1 0 0 0 0 0 0])
+  ("edge" .
+   [3 0 0 0])
+  ("edgeview" .
+   [3 0 0 0 0 0 0 0])
+  ("edge-styles" .
+   [2 0 0 0 0 0 0 0 0 0 0])
+  ("edge-attrs" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("create-edge" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("dom/append-child" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("dom/document-element" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("edge-element" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("view-edge" .
+   [1 0 0 0 0 0 0 0 0])
+  ("graph" .
+   [35 0 0 0 0])
+  ("->" .
+   [1 0])
+  ("core" .
+   [1 0 0 0])
+  ("do-batik" .
+   [1 0 0 0 0 0 0 0])
+  ("add-listener" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("add-listener-vec" .
+   [3 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("dom/element-by-id" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("dom/add-event-listener" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0])
+  ("add" .
+   [1 0 0])
+  ("add-attrs" .
+   [2 0 0 0 0 0 0 0 0])
+  ("add-attrs-kv!" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("nodes" .
+   [3 0 0 0 0])
+  ("nodeview" .
+   [3 0 0 0 0 0 0 0])
+  ("add-node-attrs" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("update-in" .
+   [2 0 0 0 0 0 0 0 0])
+  (":nodes" .
+   [3 0 0 0 0 0])
+  ("node-element" .
+   [1 0 0 0 0 0 0 0 0 0 0 0])
+  ("dom/add-attrs" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("el" .
+   [3 0])
+  ("element-id" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("stylestr" .
+   [1 0 0 0 0 0 0 0])
+  ("docel" .
+   [2 0 0 0 0])
+  ("styles" .
+   [2 0 0 0 0 0])
+  ("rect" .
+   [1 0 0 0])
+  ("dom/spit-xml" .
+   [0 0 0 0 0 0 0 0 1 0 0 0])
+  (":indent" .
+   [1 0 0 0 0 0 0])
+  ("clojure.pprint" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("attrs" .
+   [4 0 0 0 0])
+  ("istrue" .
+   [1 0 0 0 0 0])
+  ("isfalse" .
+   [1 0 0 0 0 0 0])
+  ("SwingUtilities" .
+   [1 0 0 0 0 0 0 0 1 0 0 0 0 0])
+  ("create-svg" .
+   [1 0 0 0 0 0 0 0 0 0])
+  ("100" .
+   [1 0 0])
+  ("nsname" .
+   [0 0 8 0 0 0])))

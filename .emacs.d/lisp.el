@@ -43,7 +43,6 @@
 
 
 (add-to-list 'slime-lisp-implementations '(sbcl ("sbcl")))
-; (add-to-list 'slime-lisp-implementations '(scheme ("mzscheme")))
 
 ;; load scheme-mode for .sls files
 (setq auto-mode-alist (cons '("\\.sls$" . scheme-mode) auto-mode-alist))
@@ -55,22 +54,6 @@
 	  (add-hook hook (lambda () (paredit-mode +1)))))
       '(emacs-lisp scheme lisp inferior-lisp inferior-scheme clojure slime
                    slime-repl))
-
-;; define lein-swank command
-;; (defun lein-swank ()
-;;   (interactive)
-;;   (let ((root (locate-dominating-file default-directory "project.clj")))
-;;     (when (not root)
-;;       (error "Not in a Leiningen project."))
-;;     ;; you can customize slime-port using .dir-locals.el
-;;     (shell-command (format "cd %s && lein swank %s &" root slime-port)
-;;                    "*lein-swank*")
-;;     (set-process-filter (get-buffer-process "*lein-swank*")
-;;                         (lambda (process output)
-;;                           (when (string-match "Connection opened on" output)
-;;                             (slime-connect "localhost" slime-port)
-;;                             (set-process-filter process nil))))
-;;     (message "Starting swank server...")))
 
 (eval-after-load "slime"
   '(progn
@@ -92,15 +75,9 @@
       ;; Use UTF-8 coding
       slime-net-coding-system 'utf-8-unix
       ;; Use fuzzy completion (M-Tab)
-      slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
-     
-     ;; Use parentheses editing mode paredit
-     (paredit-mode t)
-     ;; (highlight-parentheses-mode nil)
-     ))
+      slime-complete-symbol-function 'slime-fuzzy-complete-symbol)))
 
 (add-hook 'slime-repl-mode-hook '(lambda ()
-                                   (paredit-mode t)
                                    (clojure-mode-font-lock-setup)))
 
 ;; By default inputs and results have the same color
@@ -114,16 +91,7 @@
     ;; Make REPL more friendly to Clojure (ELPA does not include this?)
     ;; The function is defined in swank-clojure.el but not used?!?
     (add-hook 'slime-repl-mode-hook
-      'swank-clojure-slime-repl-modify-syntax t)
-    ;; Add classpath for Incanter (just an example)
-    ;; The preferred way to set classpath is to use swank-clojure-project
-                                        ;(add-to-list 'swank-clojure-classpath 
-     ;            "~/Documents/Projects/carneades/trunk/clojure/Carneades/src/")
-    ;(add-to-list 'swank-clojure-classpath 
-     ;            "~/Documents/Projects/carneades/trunk/clojure/Carneades/lib/jgraphx.jar")
-    ;(add-to-list 'swank-clojure-classpath 
-     ;            "~/Documents/Projects/carneades/trunk/clojure/Carneades/test/"))
-    ))
+      'swank-clojure-slime-repl-modify-syntax t)))
 
 (add-hook 'paredit-mode-hook
           (lambda ()
@@ -151,13 +119,16 @@
 
 (add-hook 'clojure-mode-hook
           (lambda ()
+            (highlight-80+-mode t)
             (durendal-enable-auto-compile)
             (define-key clojure-mode-map (kbd "<f2>") 'elein-swank)
-            (define-key clojure-mode-map (kbd "<f3>") 'elein-swank)
+            (define-key clojure-mode-map (kbd "<f3>") 'elein-reswank)
             (define-key clojure-mode-map (kbd "<f7>") 'swank-clojure-project)
-            (highlight-80+-mode t)
-            (auto-complete-mode t)))
+            ;; (auto-complete-mode t)
+            (slime-mode t)
+            
+))
 
 (add-hook 'lisp-interaction-mode-hook
           (lambda ()
-            (highlight-80+-mode)))
+            (highlight-80+-mode t)))

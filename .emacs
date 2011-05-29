@@ -1,33 +1,39 @@
-;;; EMACS customization via the menu
-(custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t)
- '(show-paren-mode t)
- '(tool-bar-mode nil)
- '(transient-mark-mode t))
+;;; 
+;;; Emacs main configuration file
+;;; 
 
+;; paths to load elisps modes:
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/git-emacs")
+(add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
+
+;; executes code in these files
 (load-file "~/.emacs.d/colors.el")
 (load-file "~/.emacs.d/lisp.el")
 
-;; (require 'git-emacs)
-(require 'git-emacs)
-(require 'git-status)
 (require 'smart-tab)
-(require 'tabbar)
 (require 'igrep)
+(require 'undo-tree)
+(require 'yasnippet)
+
+(yas/initialize)
+(yas/load-directory "~/.emacs.d/emacs-modes/yasnippet/snippets")
 
 ;; default modes
 (iswitchb-mode t)
 (icomplete-mode t)
 (column-number-mode t)
 (ido-mode t)
-(tabbar-mode t)
 (winner-mode t)
+(global-undo-tree-mode t)
+(show-paren-mode t)
+(column-number-mode t)
+
+;; no toolbar
+(tool-bar-mode -1)
+
+;; no start screen
+(setq inhibit-splash-screen t)
 
 ;; fonts
 (if (eq window-system 'x)
@@ -48,25 +54,25 @@
 (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
 ;; tab bar
-(set-face-attribute
- 'tabbar-default nil
- :background "gray60")
-(set-face-attribute
- 'tabbar-unselected nil
- :background "gray85"
- :foreground "gray30"
- :box nil)
-(set-face-attribute
- 'tabbar-selected nil
- :background "#f2f2f6"
- :foreground "black"
- :box nil)
-(set-face-attribute
- 'tabbar-button nil
- :box '(:line-width 1 :color "gray72" :style released-button))
-(set-face-attribute
- 'tabbar-separator nil
- :height 0.7)
+;; (set-face-attribute
+;;  'tabbar-default nil
+;;  :background "gray60")
+;; (set-face-attribute
+;;  'tabbar-unselected nil
+;;  :background "gray85"
+;;  :foreground "gray30"
+;;  :box nil)
+;; (set-face-attribute
+;;  'tabbar-selected nil
+;;  :background "#f2f2f6"
+;;  :foreground "black"
+;;  :box nil)
+;; (set-face-attribute
+;;  'tabbar-button nil
+;;  :box '(:line-width 1 :color "gray72" :style released-button))
+;; (set-face-attribute
+;;  'tabbar-separator nil
+;;  :height 0.7)
 
 ;; scroll
 (setq scroll-step 1)
@@ -113,10 +119,9 @@
                                   'fullboth)))))
 
 (global-set-key [f11] 'toggle-fullscreen)
-
-                                        ; Make new frames fullscreen by default. Note: this hook doesn't do
-                                        ; anything to the initial frame if it's in your .emacs, since that file is
-                                        ; read _after_ the initial frame is created.
+;; Make new frames fullscreen by default. Note: this hook doesn't do
+;; anything to the initial frame if it's in your .emacs, since that file is
+;; read _after_ the initial frame is created.
 (add-hook 'after-make-frame-functions 'toggle-fullscreen)
 
 (if (window-system)
@@ -131,3 +136,19 @@
 
 ;; starts emacs server
 (server-start)
+;;;
+
+(defun rename-file-and-buffer (new-name)
+  "Renames both current buffer and file it's visiting to NEW-NAME."
+  (interactive "sNew name: ")
+  (let ((name (buffer-name))
+    (filename (buffer-file-name)))
+    (if (not filename)
+    (message "Buffer '%s' is not visiting a file!" name)
+      (if (get-buffer new-name)
+      (message "A buffer named '%s' already exists!" new-name)
+    (progn
+      (rename-file name new-name 1)
+      (rename-buffer new-name)
+      (set-visited-file-name new-name)
+      (set-buffer-modified-p nil))))))
