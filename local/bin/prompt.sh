@@ -7,9 +7,13 @@
 # /home/me/stuff          -> ~/stuff               if USER=me
 # /usr/share/big_dir_name -> ../share/big_dir_name if pwdmaxlen=20
 ##################################################
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 bash_prompt_command() {
     # How many characters of the $PWD should be kept
-    local pwdmaxlen=25
+    local pwdmaxlen=100
     # Indicate that there has been dir truncation
     local trunc_symbol=".."
     local dir=${PWD##*/}
@@ -66,8 +70,8 @@ bash_prompt() {
     
     local UC=$W                 # user's color
     [ $UID -eq "0" ] && UC=$R   # root's color
-    
-    PS1="$TITLEBAR ${EMK}[${UC}\u${EMK}@${UC}\h ${EMB}\${NEW_PWD}${EMK}]${UC}\\$ ${NONE}"
+
+    PS1="$TITLEBAR${EMK}[${UC}\u${EMK}@${UC}\h ${EMB}\${NEW_PWD}${EMK}${G}\$(parse_git_branch)${EMK}]${UC}\nλ ${NONE}"
     # without colors: PS1="[\u@\h \${NEW_PWD}]\\$ "
     # extra backslash in front of \$ to make bash colorize the prompt
 }
