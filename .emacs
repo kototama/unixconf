@@ -1,15 +1,11 @@
-;;; 
-;;; Emacs main configuration file
-;;; 
 
-;; paths to load elisps modes:
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/git-emacs")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
 
 ;; executes code in these files
 (load-file "~/.emacs.d/colors.el")
 (load-file "~/.emacs.d/lisp.el")
+(load-file "~/.emacs.d/javascript.el")
 
 (require 'smart-tab)
 (require 'igrep)
@@ -53,27 +49,6 @@
 (setq x-select-enable-clipboard t)
 (setq interprogram-paste-function 'x-cut-buffer-or-selection-value)
 
-;; tab bar
-;; (set-face-attribute
-;;  'tabbar-default nil
-;;  :background "gray60")
-;; (set-face-attribute
-;;  'tabbar-unselected nil
-;;  :background "gray85"
-;;  :foreground "gray30"
-;;  :box nil)
-;; (set-face-attribute
-;;  'tabbar-selected nil
-;;  :background "#f2f2f6"
-;;  :foreground "black"
-;;  :box nil)
-;; (set-face-attribute
-;;  'tabbar-button nil
-;;  :box '(:line-width 1 :color "gray72" :style released-button))
-;; (set-face-attribute
-;;  'tabbar-separator nil
-;;  :height 0.7)
-
 ;; scroll
 (setq scroll-step 1)
 
@@ -88,6 +63,14 @@
         (text-mode . dabbrev-completion) ;; this is the "default" emacs expansion function
         (clojure-mode . slime-complete-symbol))) ;; see update below
 
+(defun toggle-fullscreen (&optional f)
+  (interactive)
+  (let ((current-value (frame-parameter nil 'fullscreen)))
+    (set-frame-parameter nil 'fullscreen
+                         (if (equal 'fullboth current-value)
+                             (if (boundp 'old-fullscreen) old-fullscreen nil)
+                           (progn (setq old-fullscreen current-value)
+                                  'fullboth)))))
 ;; global bindings
 (global-set-key [C-tab] 'other-window)
 (global-set-key "\r" 'newline-and-indent)
@@ -107,18 +90,14 @@
 (global-set-key (kbd "C-S-j") 'join-line)
 (global-set-key (kbd "C-<prior>") 'tabbar-forward)
 (global-set-key (kbd "C-<next>") 'tabbar-backward)
-
-;; fullscreen on F11
-(defun toggle-fullscreen (&optional f)
-  (interactive)
-  (let ((current-value (frame-parameter nil 'fullscreen)))
-    (set-frame-parameter nil 'fullscreen
-                         (if (equal 'fullboth current-value)
-                             (if (boundp 'old-fullscreen) old-fullscreen nil)
-                           (progn (setq old-fullscreen current-value)
-                                  'fullboth)))))
-
+(global-set-key (kbd "<f2>") 'slime-connect)
+(global-set-key (kbd "<f9>") 'paredit-mode)
 (global-set-key [f11] 'toggle-fullscreen)
+(global-set-key (kbd "<C-return>")
+                '(lambda ()
+                   (interactive)
+                   (switch-to-buffer nil)))
+
 ;; Make new frames fullscreen by default. Note: this hook doesn't do
 ;; anything to the initial frame if it's in your .emacs, since that file is
 ;; read _after_ the initial frame is created.
@@ -152,3 +131,4 @@
       (rename-buffer new-name)
       (set-visited-file-name new-name)
       (set-buffer-modified-p nil))))))
+
