@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/")
+
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib/")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/clojure-mode/")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/swank-clojure/")
@@ -10,26 +10,25 @@
 ;; Customize swank-clojure start-up to reflect possible classpath changes
 ;; M-x ielm `slime-lisp-implementations RET or see `swank-clojure.el'
 ;; for more info 
-(defadvice slime-read-interactive-args (before add-clojure)
-  (require 'assoc)
-  (aput 'slime-lisp-implementations 'clojure
-	(list (swank-clojure-cmd) :init 'swank-clojure-init)))
+;; (defadvice slime-read-interactive-args (before add-clojure)
+;;   (require 'assoc)
+;;   (aput 'slime-lisp-implementations 'clojure
+;; 	(list (swank-clojure-cmd) :init 'swank-clojure-init)))
 
 (require 'slime)
 (require 'slime-repl)
 (require 'paredit)
 (require 'elein)
 (require 'highlight-80+)
-(require 'durendal)
 (require 'clojure-mode)
 (require 'swank-clojure)
-(require 'auto-complete)
-(require 'ac-slime)
+;; (require 'auto-complete)
+;; (require 'ac-slime)
 (require 'swank-clojure-extra)
 
-(setq inferior-lisp-program "cd /home/pal/Documents/Projects/carneades/src/CarneadesEditor ; lein swank")
+;; (setq inferior-lisp-program "cd /home/pal/Documents/Projects/carneades/src/CarneadesEditor ; lein swank")
 
-(add-hook 'slime-mode-hook 'set-up-slime-ac)
+;; (add-hook 'slime-mode-hook 'set-up-slime-ac)
 (add-hook 'slime-mode-hook 'slime-redirect-inferior-output)
 
 (setq slime-protocol-version 'ignore)
@@ -52,33 +51,41 @@
 	(let ((hook (intern (concat (symbol-name mode)
 				    "-mode-hook"))))
 	  (add-hook hook (lambda () (paredit-mode +1)))))
-      '(emacs-lisp scheme lisp inferior-lisp inferior-scheme clojure slime
-                   slime-repl))
+      '(emacs-lisp scheme lisp inferior-lisp inferior-scheme clojure
+                   ;; slime
+                   ;; slime-repl
+                   ))
 
 (eval-after-load "slime"
   '(progn
      ;; "Extra" features (contrib)
      (slime-setup 
-      '(slime-repl slime-banner slime-fuzzy)) ;; slime-highlight-edits
+      '(slime-repl slime-banner slime-fuzzy))
      ;; define <return> as paredit-newline, just type <C-return>
      ;; to evaluate the expression
      (define-key slime-repl-mode-map (kbd "<return>") 'paredit-newline)
      (define-key slime-repl-mode-map (kbd "<S-return>")
        'slime-repl-closing-return)
-     (define-key slime-repl-mode-map (kbd "<C-return>") '(lambda ()
-                                                           (interactive)
-                                                           (switch-to-buffer nil)))
-     (define-key slime-repl-mode-map (kbd "<f9>") 'slime-restart-inferior-lisp)
-     (define-key slime-repl-mode-map (kbd "<f3>") 'slime-edit-definition)
-     ;;(define-key slime-repl-mode-map (kbd "C-M-p") 'slime-repl-backward-input)
+     (define-key slime-repl-mode-map
+       (kbd "<C-return>") '(lambda ()
+                             (interactive)
+                             (switch-to-buffer nil)))
      (setq
       ;; Use UTF-8 coding
       slime-net-coding-system 'utf-8-unix
       ;; Use fuzzy completion (M-Tab)
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol)))
 
-(add-hook 'slime-repl-mode-hook '(lambda ()
-                                   (clojure-mode-font-lock-setup)))
+(add-hook 'slime-repl-mode-hook
+          '(lambda ()
+             (clojure-mode-font-lock-setup)
+             (paredit-mode t)
+             (define-key slime-repl-mode-map (kbd "C-c r")
+               '(lambda ()
+                  (interactive)
+                  (slime-repl-previous-matching-input (slime-repl-current-input))))
+             (define-key slime-repl-mode-map (kbd "C-c s")
+               'slime-repl-next-matching-input)))
 
 ;; By default inputs and results have the same color
 ;; Customize result color to differentiate them
@@ -95,40 +102,19 @@
 
 (add-hook 'paredit-mode-hook
           (lambda ()
-            (define-key paredit-mode-map (kbd "\r") 'paredit-newline)
-            ;; (highlight-parentheses-mode t)
-            ;; copy a sexp without killing it (BETA)
-            (define-key paredit-mode-map (kbd "M-k")
-              '(lambda ()
-                 (interactive)
-                 (mark-sexp)
-                 (let ((cur (point))
-                       (beg (progn
-                              (paredit-backward)
-                              (paredit-backward)
-                              (point)))
-                       (end (progn
-                              (paredit-forward)
-                              (point))))
-                   (copy-region-as-kill beg end))))))
-
-(add-hook 'inferior-scheme-mode-hook
-          (lambda ()
-            (define-key inferior-scheme-mode-map (kbd "<C-return>")
-              'comint-send-input)))
+            ;; (define-key paredit-mode-map (kbd "<return>") '())
+            ))
 
 (add-hook 'clojure-mode-hook
           (lambda ()
+            (paredit-mode t)
             (highlight-80+-mode t)
             (durendal-enable-auto-compile)
-            (define-key clojure-mode-map (kbd "<f2>") 'elein-swank)
-            (define-key clojure-mode-map (kbd "<f3>") 'elein-reswank)
-            (define-key clojure-mode-map (kbd "<f7>") 'swank-clojure-project)
+            (define-key clojure-mode-map (kbd "<f3>") 'slime-edit-definition)
             ;; (auto-complete-mode t)
-            (slime-mode t)
-            
-))
+            (slime-mode t)))
 
 (add-hook 'lisp-interaction-mode-hook
           (lambda ()
             (highlight-80+-mode t)))
+
