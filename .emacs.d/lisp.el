@@ -1,81 +1,38 @@
 
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/slime/contrib/")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/clojure-mode/")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/swank-clojure/")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/paredit/")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/highlight-80+/")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/auto-complete/")
-(add-to-list 'load-path "~/.emacs.d/emacs-modes/misc/")
-
-;; Customize swank-clojure start-up to reflect possible classpath changes
-;; M-x ielm `slime-lisp-implementations RET or see `swank-clojure.el'
-;; for more info 
-;; (defadvice slime-read-interactive-args (before add-clojure)
-;;   (require 'assoc)
-;;   (aput 'slime-lisp-implementations 'clojure
-;; 	(list (swank-clojure-cmd) :init 'swank-clojure-init)))
-
-(require 'slime)
 (require 'slime-repl)
-(require 'paredit)
-(require 'elein)
-(require 'highlight-80+)
 (require 'clojure-mode)
-(require 'swank-clojure)
-;; (require 'auto-complete)
-;; (require 'ac-slime)
-(require 'swank-clojure-extra)
 
-;; (setq inferior-lisp-program "cd /home/pal/Documents/Projects/carneades/src/CarneadesEditor ; lein swank")
+;; paredit everywhere
+(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
+(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+(add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
+(add-hook 'slime-repl-mode-hook       (lambda () (paredit-mode +1)))
 
-;; (add-hook 'slime-mode-hook 'set-up-slime-ac)
-(add-hook 'slime-mode-hook 'slime-redirect-inferior-output)
+(setq blink-matching-paren nil)
 
 (setq slime-protocol-version 'ignore)
 
-;(set-face-foreground 'paren-face "blue4")
-(setq hl-paren-colors
-       '("purple" "magenta1" "slateblue1" "cyan1" "springgreen1" "green1"
-       "greenyellow" "yellow1" "orange1"))
-;; ("orange1" "yellow1" "greenyellow" "green1"
-;;         "springgreen1" "cyan1" "slateblue1" "magenta1" "purple")
+;; By default inputs and results have the same color
+(custom-set-faces
+ '(slime-repl-result-face ((t (:foreground "orange")))))
 
+(defvar electrify-return-match
+  "[\]}\)\"]"
+  "If this regexp matches the text after the cursor, do an \"electric\"
+             return.")
 
-(add-to-list 'slime-lisp-implementations '(sbcl ("sbcl")))
-
-;; load scheme-mode for .sls files
-(setq auto-mode-alist (cons '("\\.sls$" . scheme-mode) auto-mode-alist))
-
-;; enable paredit for Lisp / Clojure modes / SLIME REPL
-(mapc (lambda (mode)
-	(let ((hook (intern (concat (symbol-name mode)
-				    "-mode-hook"))))
-	  (add-hook hook (lambda () (paredit-mode +1)))))
-      '(emacs-lisp scheme lisp inferior-lisp inferior-scheme clojure
-                   ;; slime
-                   ;; slime-repl
-                   ))
-
-(eval-after-load "slime"
-  '(progn
-     ;; "Extra" features (contrib)
-     (slime-setup 
-      '(slime-repl slime-banner slime-fuzzy))
-     ;; define <return> as paredit-newline, just type <C-return>
-     ;; to evaluate the expression
-     (define-key slime-repl-mode-map (kbd "<return>") 'paredit-newline)
-     (define-key slime-repl-mode-map (kbd "<S-return>")
-       'slime-repl-closing-return)
-     (define-key slime-repl-mode-map
-       (kbd "<C-return>") '(lambda ()
-                             (interactive)
-                             (switch-to-buffer nil)))
-     (setq
-      ;; Use UTF-8 coding
-      slime-net-coding-system 'utf-8-unix
-      ;; Use fuzzy completion (M-Tab)
-      slime-complete-symbol-function 'slime-fuzzy-complete-symbol)))
-
+(defun electrify-return-if-match (arg)
+  "If the text after the cursor matches `electrify-return-match' then
+                     open and indent an empty line between the cursor and the text.  Move the
+                       cursor to the new line."
+  (interactive "P")
+  (let ((case-fold-search nil))
+    (if (looking-at electrify-return-match)
+        (save-excursion (newline-and-indent)))
+    (newline arg)
+    (indent-according-to-mode)))
+ 
 (add-hook 'slime-repl-mode-hook
           '(lambda ()
              (clojure-mode-font-lock-setup)
@@ -84,37 +41,80 @@
                '(lambda ()
                   (interactive)
                   (slime-repl-previous-matching-input (slime-repl-current-input))))
+             (define-key slime-repl-mode-map
+               (kbd "<C-return>") '(lambda ()
+                                     (interactive)
+                                     (switch-to-buffer nil)))
              (define-key slime-repl-mode-map (kbd "C-c s")
-               'slime-repl-next-matching-input)))
+               'slime-repl-next-matching-input)
+             (define-key slime-repl-mode-map (kbd "<return>") 'paredit-newline)
+             (define-key slime-repl-mode-map (kbd "<S-return>")
+               'slime-repl-closing-return)))
 
-;; By default inputs and results have the same color
-;; Customize result color to differentiate them
-;; Look for `defface' in `slime-repl.el' if you want to further customize
-(custom-set-faces
- '(slime-repl-result-face ((t (:foreground "orange")))))
-
-(eval-after-load "swank-clojure"
-  '(progn
-    ;; Make REPL more friendly to Clojure (ELPA does not include this?)
-    ;; The function is defined in swank-clojure.el but not used?!?
-    (add-hook 'slime-repl-mode-hook
-      'swank-clojure-slime-repl-modify-syntax t)))
-
-(add-hook 'paredit-mode-hook
+(add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            ;; (define-key paredit-mode-map (kbd "<return>") '())
-            ))
+            (paredit-mode t)
+
+            (turn-on-eldoc-mode)
+            (eldoc-add-command
+             'paredit-backward-delete
+             'paredit-close-round)
+
+            (local-set-key (kbd "RET") 'electrify-return-if-match)
+            (eldoc-add-command 'electrify-return-if-match)
+
+            (show-paren-mode t)))
 
 (add-hook 'clojure-mode-hook
           (lambda ()
             (paredit-mode t)
-            (highlight-80+-mode t)
-            (durendal-enable-auto-compile)
-            (define-key clojure-mode-map (kbd "<f3>") 'slime-edit-definition)
-            ;; (auto-complete-mode t)
-            (slime-mode t)))
+            (local-set-key (kbd "RET") 'electrify-return-if-match)
+            (show-paren-mode t)))
 
-(add-hook 'lisp-interaction-mode-hook
-          (lambda ()
-            (highlight-80+-mode t)))
+(defun earmuffy (&optional arg)
+  (interactive "P")
+  (let* ((variable (thing-at-point 'sexp))
+         (bounds (bounds-of-thing-at-point 'sexp))
+         (current-point (point))
+         (earmuffed-variable (concat "*" variable "*")))
+    (save-excursion)
+    (kill-region (car bounds) (cdr bounds))
+    (if arg
+        ;; unearmuffy
+        (progn
+          (insert (substring variable 1 (- (length variable) 1)))
+          (goto-char (- current-point 1)))
+      ;; earmuffy
+      (progn
+        (insert earmuffed-variable)
+        (goto-char (+ current-point 1))))))
 
+(defun clojure-correct-ns
+  ()
+  "Returns the namespace name that the file should have."
+ (let* ((nsname ())
+        (dirs (reverse (split-string (buffer-file-name) "/")))
+        (aftersrc nil))
+   (dolist (dir dirs)
+     (when (not aftersrc)
+       (if (or (string= dir "src") (string= dir "test"))
+           (setq aftersrc t)
+         (setq nsname (append nsname (list dir "."))))))
+   (when nsname
+     (replace-regexp-in-string "_" "-" (substring (apply 'concat (reverse nsname))  1 -4)))))
+
+(defun clojure-update-ns
+  ()
+  "Updates the namespace of the current buffer. Useful if a file has been renamed."
+  (interactive)
+  (let ((nsname (clojure-correct-ns)))
+    (when nsname
+      (clojure-find-package) ;; function defined in clojure-mode
+      (replace-match nsname nil nil nil 4))))
+
+(add-hook 'clojure-mode-hook
+  '(lambda ()
+     (paredit-mode t)
+     (define-key clojure-mode-map (kbd "<f3>") 'slime-edit-definition)
+     (define-key clojure-mode-map (kbd "<f12>") 'slime-compile-and-load-file)
+     (define-key clojure-mode-map (kbd "C-*") 'earmuffy)))
