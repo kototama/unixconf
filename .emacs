@@ -30,9 +30,14 @@
 
 (require 'undo-tree)
 (require 'yasnippet)
+(require 'paren)
+(require 'multi-term)
 
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/emacs-modes/yasnippet/snippets")
+
+;; associations between files extensions and modes
+(setq auto-mode-alist (cons '("\\.html$" . nxml-mode) auto-mode-alist))
 
 ;; ido-mode options
 (setq ido-enable-flex-matching t)
@@ -41,12 +46,17 @@
 (setq ido-file-extensions-order
       '(".clj" ".txt" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
 
+;; show paren options
+(set-face-background 'show-paren-match-face "transparent")
+(set-face-foreground 'show-paren-match-face "red")
+
 ;; always uses the following modes 
 (ido-mode t)
 (global-undo-tree-mode t)
 (highlight-parentheses-mode t)
 (show-paren-mode t)
-
+(winner-mode t)
+(column-number-mode t)
 
 ;; no toolbar
 (tool-bar-mode -1)
@@ -54,10 +64,10 @@
 ;; no start screen
 (setq inhibit-splash-screen t)
 
-;; no tabs, spaces instead!
+;; no tabs, spaces instead
 (setq-default indent-tabs-mode nil)
 
-;; Changes all yes/no questions to y/n type
+;; changes all yes/no questions to y/n type
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; do not confirm file creation
@@ -115,20 +125,36 @@
 (global-set-key (kbd "C-<prior>") 'tabbar-forward)
 (global-set-key (kbd "C-<next>") 'tabbar-backward)
 (global-set-key (kbd "<f2>") 'slime-connect)
-(global-set-key (kbd "<f8>") '(lambda ()
-                                (interactive)
-                                (split-window-vertically 25)
-                                (other-window 1)
-                                (slime)))
-(global-set-key (kbd "<f9>") 'paredit-mode)
+(global-set-key (kbd "<f4>") 'magit-status)
+(global-set-key (kbd "<f8>") 'paredit-mode)
+(global-set-key (kbd "<f5>") 'slime-compile-and-load-file)
+(global-set-key (kbd "<f12>") '(lambda ()
+                                 (interactive)
+                                 (kill-buffer nil)))
 (global-set-key [f11] 'toggle-fullscreen)
 (global-set-key (kbd "<C-return>")
                 '(lambda ()
                    (interactive)
                    (switch-to-buffer nil)))
+(global-set-key (kbd "C-c t") 'multi-term-next)
+(global-set-key (kbd "C-c T") 'multi-term)
 
 (if (window-system)
   (set-frame-height (selected-frame) 60))
+
+
+;; js2-mode configuration
+(add-hook 'js2-mode-hook
+  '(lambda ()
+     (define-key js2-mode-map (kbd "<return>") 
+       '(lambda ()
+          (interactive)
+          (js2-enter-key)
+          (indent-for-tab-command)))))
+
+;; unicode
+(set-language-environment "UTF-8")
+(setq slime-net-coding-system 'utf-8-unix)
 
 ;; starts emacs server
 (server-start)
