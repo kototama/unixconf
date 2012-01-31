@@ -32,6 +32,7 @@
 (require 'yasnippet)
 (require 'paren)
 (require 'multi-term)
+(require 'igrep)
 
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/emacs-modes/yasnippet/snippets")
@@ -125,13 +126,16 @@
 (global-set-key (kbd "C-<prior>") 'tabbar-forward)
 (global-set-key (kbd "C-<next>") 'tabbar-backward)
 (global-set-key (kbd "<f2>") 'slime-connect)
-(global-set-key (kbd "<f4>") 'magit-status)
+(global-set-key (kbd "<f11>") 'magit-status)
 (global-set-key (kbd "<f8>") 'paredit-mode)
 (global-set-key (kbd "<f5>") 'slime-compile-and-load-file)
 (global-set-key (kbd "<f12>") '(lambda ()
                                  (interactive)
                                  (kill-buffer nil)))
-(global-set-key [f11] 'toggle-fullscreen)
+;; (global-set-key (kbd "²") '(lambda ()
+;;                                  (interactive)
+;;                                  (kill-buffer nil)))
+(global-set-key [f10] 'toggle-fullscreen)
 (global-set-key (kbd "<C-return>")
                 '(lambda ()
                    (interactive)
@@ -158,3 +162,12 @@
 
 ;; starts emacs server
 (server-start)
+
+(add-hook 'nxml-mode-hook
+          '(lambda ()
+             (define-key nxml-mode-map
+               (kbd "<C-return>") '(lambda ()
+                                     (interactive)
+                                     (switch-to-buffer nil)))))
+
+

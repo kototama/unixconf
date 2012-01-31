@@ -1,4 +1,4 @@
-
+(require 'slime)
 (require 'slime-repl)
 (require 'clojure-mode)
 
@@ -68,7 +68,7 @@
 (add-hook 'clojure-mode-hook
           (lambda ()
             (paredit-mode t)
-            (local-set-key (kbd "RET") 'electrify-return-if-match)
+            ;; (local-set-key (kbd "RET") 'electrify-return-if-match)
             (show-paren-mode t)))
 
 (defun earmuffy (&optional arg)
@@ -116,5 +116,6 @@
   '(lambda ()
      (paredit-mode t)
      (define-key clojure-mode-map (kbd "<f3>") 'slime-edit-definition)
-     (define-key clojure-mode-map (kbd "<f12>") 'slime-compile-and-load-file)
-     (define-key clojure-mode-map (kbd "C-*") 'earmuffy)))
+     (define-key clojure-mode-map (kbd "C-*") 'earmuffy)
+     (define-key clojure-mode-map "{" 'paredit-open-brace)
+     (define-key clojure-mode-map "}" 'paredit-close-brace)))
