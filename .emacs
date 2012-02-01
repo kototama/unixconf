@@ -10,6 +10,7 @@
      (expand-file-name "~/.emacs.d/elpa/package.el"))
   (package-initialize))
 
+
 ;; path for the modes that are not part of package
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
@@ -33,6 +34,12 @@
 (require 'paren)
 (require 'multi-term)
 (require 'igrep)
+(require 'package)
+
+(package-initialize)
+(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")))
+
 
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/emacs-modes/yasnippet/snippets")
