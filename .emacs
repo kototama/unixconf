@@ -35,6 +35,7 @@
 (require 'multi-term)
 (require 'igrep)
 (require 'package)
+(require 'maxframe)
 
 (package-initialize)
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
@@ -91,6 +92,9 @@
 ;; scroll
 (setq scroll-step 1)
 
+;; default shell to zsh
+(setq multi-term-program "/bin/zsh")
+
 ;; emacs lisp functions
 (defun toggle-fullscreen (&optional f)
   (interactive)
@@ -124,25 +128,28 @@
 
 
 ; switch buffer with last previous buffer
-(global-set-key (kbd "<C-return>") '(lambda ()
-                                      (interactive)
-                                      (switch-to-buffer nil)))
 (global-set-key (kbd "C-p") 'backward-char)
 (global-set-key (kbd "C-S-p") 'previous-line)
 (global-set-key (kbd "C-S-j") 'join-line)
 (global-set-key (kbd "C-<prior>") 'tabbar-forward)
 (global-set-key (kbd "C-<next>") 'tabbar-backward)
-(global-set-key (kbd "<f2>") 'slime-connect)
-(global-set-key (kbd "<f11>") 'magit-status)
-(global-set-key (kbd "<f8>") 'paredit-mode)
-(global-set-key (kbd "<f5>") 'slime-compile-and-load-file)
-(global-set-key (kbd "<f12>") '(lambda ()
+
+(global-set-key [f1] 'multi-term)
+(global-set-key [f2] 'multi-term-next)
+(global-set-key [f4] 'slime-connect)
+(global-set-key [(shift f3)] 'kmacro-start-macro-or-insert-counter)
+(global-set-key [(shift f4)] 'kmacro-end-or-call-macro)
+(global-set-key [f5] 'slime-compile-and-load-file)
+(global-set-key [f8] 'paredit-mode)
+(global-set-key [f9] 'magit-status)
+;; (global-set-key [f10] 'toggle-fullscreen)
+(global-set-key [f12] '(lambda ()
                                  (interactive)
                                  (kill-buffer nil)))
 ;; (global-set-key (kbd "²") '(lambda ()
 ;;                                  (interactive)
 ;;                                  (kill-buffer nil)))
-(global-set-key [f10] 'toggle-fullscreen)
+
 (global-set-key (kbd "<C-return>")
                 '(lambda ()
                    (interactive)
@@ -150,8 +157,11 @@
 (global-set-key (kbd "C-c t") 'multi-term-next)
 (global-set-key (kbd "C-c T") 'multi-term)
 
-(if (window-system)
-  (set-frame-height (selected-frame) 60))
+;; (if (window-system)
+;;     (progn
+;;       (set-frame-height (selected-frame) 66)
+;;       (set-frame-width (selected-frame) 240)))
+(add-hook 'window-setup-hook 'maximize-frame t)
 
 
 ;; js2-mode configuration
