@@ -23,7 +23,7 @@
 
 ;; fonts
 (if (eq window-system 'x)
-    (set-default-font "Inconsolata-13"))
+    (set-frame-font "Inconsolata-13"))
 
 ;; save backup files in this directory
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
@@ -36,6 +36,9 @@
 (require 'igrep)
 (require 'package)
 (require 'maxframe)
+
+(autoload 'mo-git-blame-file "mo-git-blame" nil t)
+(autoload 'mo-git-blame-current "mo-git-blame" nil t)
 
 (package-initialize)
 (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
@@ -134,12 +137,12 @@
 (global-set-key (kbd "C-<prior>") 'tabbar-forward)
 (global-set-key (kbd "C-<next>") 'tabbar-backward)
 
+(global-set-key (kbd "M-g") 'goto-line)
 (global-set-key [f1] 'multi-term)
 (global-set-key [f2] 'multi-term-next)
 (global-set-key [f4] 'slime-connect)
 (global-set-key [(shift f3)] 'kmacro-start-macro-or-insert-counter)
 (global-set-key [(shift f4)] 'kmacro-end-or-call-macro)
-(global-set-key [f5] 'slime-compile-and-load-file)
 (global-set-key [f8] 'paredit-mode)
 (global-set-key [f9] 'magit-status)
 ;; (global-set-key [f10] 'toggle-fullscreen)
