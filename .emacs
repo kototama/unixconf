@@ -141,6 +141,7 @@
 (global-set-key [f1] 'multi-term)
 (global-set-key [f2] 'multi-term-next)
 (global-set-key [f4] 'slime-connect)
+(global-set-key [f5] 'slime-compile-and-load-file)
 (global-set-key [(shift f3)] 'kmacro-start-macro-or-insert-counter)
 (global-set-key [(shift f4)] 'kmacro-end-or-call-macro)
 (global-set-key [f8] 'paredit-mode)
