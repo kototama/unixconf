@@ -129,13 +129,25 @@
 (global-set-key "\r" 'newline-and-indent)
 (global-set-key (kbd "C-;") 'comment-region)
 
-
-; switch buffer with last previous buffer
 (global-set-key (kbd "C-p") 'backward-char)
 (global-set-key (kbd "C-S-p") 'previous-line)
 (global-set-key (kbd "C-S-j") 'join-line)
 (global-set-key (kbd "C-<prior>") 'tabbar-forward)
 (global-set-key (kbd "C-<next>") 'tabbar-backward)
+
+(defun move-indentation-or-line 
+  ()
+  "Moves to the beginning of indentation or to the beginning of
+   the line if the point is already on the first indentation"
+  (interactive)
+  (let ((point-before-identation (point)))
+    (back-to-indentation)
+    (let ((point-second-indentation (point)))
+      (if (equal point-before-identation point-second-indentation)
+          (move-beginning-of-line nil)))))
+
+(global-set-key (kbd "C-a") 'move-indentation-or-line)
+
 
 (global-set-key (kbd "M-g") 'goto-line)
 (global-set-key [f1] 'multi-term)
@@ -148,8 +160,8 @@
 (global-set-key [f9] 'magit-status)
 ;; (global-set-key [f10] 'toggle-fullscreen)
 (global-set-key [f12] '(lambda ()
-                                 (interactive)
-                                 (kill-buffer nil)))
+                         (interactive)
+                         (kill-buffer nil)))
 ;; (global-set-key (kbd "²") '(lambda ()
 ;;                                  (interactive)
 ;;                                  (kill-buffer nil)))
