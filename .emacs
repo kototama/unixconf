@@ -123,18 +123,6 @@
       (set-visited-file-name new-name)
       (set-buffer-modified-p nil))))))
 
-
-;; global key bindings
-(global-set-key [C-tab] 'other-window)
-(global-set-key "\r" 'newline-and-indent)
-(global-set-key (kbd "C-;") 'comment-region)
-
-(global-set-key (kbd "C-p") 'backward-char)
-(global-set-key (kbd "C-S-p") 'previous-line)
-(global-set-key (kbd "C-S-j") 'join-line)
-(global-set-key (kbd "C-<prior>") 'tabbar-forward)
-(global-set-key (kbd "C-<next>") 'tabbar-backward)
-
 (defun move-indentation-or-line 
   ()
   "Moves to the beginning of indentation or to the beginning of
@@ -146,12 +134,40 @@
       (if (equal point-before-identation point-second-indentation)
           (move-beginning-of-line nil)))))
 
+(defun eager-kill-line
+  ()
+  "Kills the current line or join the next line 
+   if the point is at the end of the line"
+  (interactive)
+  (let ((current-point (point)))
+    (end-of-line nil)
+    (let ((point-after (point)))
+      (goto-char current-point)
+      (if (equal current-point point-after)
+          (delete-indentation 1)
+        (kill-line nil)))))
+
+;; global key bindings
+(global-set-key [C-tab] 'other-window)
+(global-set-key "\r" 'newline-and-indent)
+(global-set-key (kbd "C-;") 'comment-region)
+
+(global-set-key (kbd "C-k") 'eager-kill-line)
+(global-set-key (kbd "C-p") 'backward-char)
+(global-set-key (kbd "C-S-p") 'previous-line)
+(global-set-key (kbd "C-S-j") 'join-line)
+(global-set-key (kbd "C-<prior>") 'tabbar-forward)
+(global-set-key (kbd "C-<next>") 'tabbar-backward)
+
+
+
 (global-set-key (kbd "C-a") 'move-indentation-or-line)
 
 
 (global-set-key (kbd "M-g") 'goto-line)
 (global-set-key [f1] 'multi-term)
-(global-set-key [f2] 'multi-term-next)
+(global-set-key [f2] 'multi-term-prev)
+(global-set-key [f3] 'multi-term-next)
 (global-set-key [f4] 'slime-connect)
 (global-set-key [f5] 'slime-compile-and-load-file)
 (global-set-key [(shift f3)] 'kmacro-start-macro-or-insert-counter)

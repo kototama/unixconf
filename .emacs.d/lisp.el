@@ -3,11 +3,10 @@
 (require 'clojure-mode)
 
 ;; paredit everywhere
-(add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
-(add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
-(add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
-(add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
-(add-hook 'slime-repl-mode-hook       (lambda () (paredit-mode +1)))
+;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
+;; (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1)))
+;; (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1)))
+;; (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1)))
 
 (setq blink-matching-paren nil)
 
@@ -24,15 +23,43 @@
 
 (defun electrify-return-if-match (arg)
   "If the text after the cursor matches `electrify-return-match' then
-                     open and indent an empty line between the cursor and the text.  Move the
-                       cursor to the new line."
+   open and indent an empty line between the cursor and the text.  Move the
+   cursor to the new line."
   (interactive "P")
   (let ((case-fold-search nil))
     (if (looking-at electrify-return-match)
         (save-excursion (newline-and-indent)))
     (newline arg)
     (indent-according-to-mode)))
- 
+
+(defun paredit-eager-kill-line
+  ()
+  "Kills the current line or join the next line 
+   if the point is at the end of the line"
+  (interactive)
+  (let ((current-point (point)))
+    (end-of-line nil)
+    (let ((point-after (point)))
+      (goto-char current-point)
+      (if (equal current-point point-after)
+          (delete-indentation 1)
+        (paredit-kill nil)))))
+
+(eval-after-load "paredit"
+  '(progn (define-key paredit-mode-map (kbd "C-c 0") 'paredit-forward-slurp-sexp)
+          (define-key paredit-mode-map (kbd "C-c )") 'paredit-forward-barf-sexp)
+          (define-key paredit-mode-map (kbd "C-c 9") 'paredit-backward-slurp-sexp)
+          (define-key paredit-mode-map (kbd "C-c (") 'paredit-backward-barf-sexp)
+          (define-key paredit-mode-map (kbd "M-R") 'paredit-raise-sexp)
+          (define-key paredit-mode-map (kbd "M-r") nil)
+          (define-key paredit-mode-map (kbd "C-k") 'paredit-eager-kill-line)))
+
+;; Make Slime's REPL Clojure friendly
+(add-hook 'slime-repl-mode-hook
+          '(lambda ()
+             (paredit-mode t)
+             (set-syntax-table clojure-mode-syntax-table)))
+
 (add-hook 'slime-repl-mode-hook
           '(lambda ()
              (clojure-mode-font-lock-setup)
@@ -45,11 +72,11 @@
                (kbd "<C-return>") '(lambda ()
                                      (interactive)
                                      (switch-to-buffer nil)))
-             (define-key slime-repl-mode-map (kbd "C-c s")
-               'slime-repl-next-matching-input)
+             (define-key slime-repl-mode-map (kbd "C-c s") 'slime-repl-next-matching-input)
              (define-key slime-repl-mode-map (kbd "<return>") 'paredit-newline)
-             (define-key slime-repl-mode-map (kbd "<S-return>")
-               'slime-repl-closing-return)))
+             (define-key slime-repl-mode-map (kbd "<S-return>") 'slime-repl-closing-return)
+             ;; (define-key slime-repl-mode-map (kbd "M-r") 'slime-repl-previous-matching-input)
+             ))
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
@@ -115,7 +142,8 @@
 (add-hook 'clojure-mode-hook
   '(lambda ()
      (paredit-mode t)
-     (define-key clojure-mode-map (kbd "<f3>") 'slime-edit-definition)
+     (define-key clojure-mode-map [f5] 'slime-compile-and-load-file)
+     (define-key clojure-mode-map [f6] 'slime-edit-definition-with-etags)
      (define-key clojure-mode-map (kbd "C-*") 'earmuffy)
      (define-key clojure-mode-map "{" 'paredit-open-brace)
      (define-key clojure-mode-map "}" 'paredit-close-brace)))
