@@ -23,7 +23,11 @@
 
 ;; fonts
 (if (eq window-system 'x)
-    (set-frame-font "Inconsolata-13"))
+    (progn
+      (set-frame-font "Inconsolata-13")
+      ;; (add-to-list 'default-frame-alist
+      ;;              '(font . "Inconsolata-13"))
+      ))
 
 ;; save backup files in this directory
 (setq backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
@@ -56,7 +60,13 @@
 (setq ido-everywhere t)
 (setq ido-ignore-extensions t)
 (setq ido-file-extensions-order
-      '(".clj" ".txt" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
+      '(".clj" "js" ".txt" ".emacs" ".xml" ".el" ".ini" ".cfg" ".cnf"))
+
+;; igrep options
+(put 'igrep-files-default 'clojure-mode
+     (lambda () "*.clj"))
+(put 'igrep-files-default 'js2-mode
+     (lambda () "*.js"))
 
 ;; show paren options
 (set-face-background 'show-paren-match-face "transparent")
@@ -139,27 +149,24 @@
   "Kills the current line or join the next line 
    if the point is at the end of the line"
   (interactive)
-  (let ((current-point (point)))
-    (end-of-line nil)
-    (let ((point-after (point)))
-      (goto-char current-point)
-      (if (equal current-point point-after)
-          (delete-indentation 1)
-        (kill-line nil)))))
+  (if (and (eolp)
+           (not (bolp)))
+      (delete-indentation 1)
+    (kill-line nil)))
 
 ;; global key bindings
 (global-set-key [C-tab] 'other-window)
 (global-set-key "\r" 'newline-and-indent)
 (global-set-key (kbd "C-;") 'comment-region)
-
 (global-set-key (kbd "C-k") 'eager-kill-line)
 (global-set-key (kbd "C-p") 'backward-char)
 (global-set-key (kbd "C-S-p") 'previous-line)
 (global-set-key (kbd "C-S-j") 'join-line)
-(global-set-key (kbd "C-<prior>") 'tabbar-forward)
-(global-set-key (kbd "C-<next>") 'tabbar-backward)
-
-
+;; (global-set-key (kbd "C-<prior>") 'tabbar-forward)
+;; (global-set-key (kbd "C-<next>") 'tabbar-backward)
+(global-set-key (kbd "C-M-s") 'igrep-find)
+;; (global-set-key [C-kp-1] '(lambda ()
+;;                             (ido-find-file "~/.emacs")))
 
 (global-set-key (kbd "C-a") 'move-indentation-or-line)
 
@@ -168,12 +175,15 @@
 (global-set-key [f1] 'multi-term)
 (global-set-key [f2] 'multi-term-prev)
 (global-set-key [f3] 'multi-term-next)
-(global-set-key [f4] 'slime-connect)
-(global-set-key [f5] 'slime-compile-and-load-file)
 (global-set-key [(shift f3)] 'kmacro-start-macro-or-insert-counter)
 (global-set-key [(shift f4)] 'kmacro-end-or-call-macro)
+(global-set-key [f4] 'slime-connect)
+(global-set-key [f5] 'slime-compile-and-load-file)
+(global-set-key [f6] 'next-error)
 (global-set-key [f8] 'paredit-mode)
 (global-set-key [f9] 'magit-status)
+
+
 ;; (global-set-key [f10] 'toggle-fullscreen)
 (global-set-key [f12] '(lambda ()
                          (interactive)

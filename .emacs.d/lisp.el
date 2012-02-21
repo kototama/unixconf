@@ -1,6 +1,7 @@
 (require 'slime)
 (require 'slime-repl)
 (require 'clojure-mode)
+(require 'cljdoc)
 
 ;; paredit everywhere
 ;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
@@ -37,13 +38,13 @@
   "Kills the current line or join the next line 
    if the point is at the end of the line"
   (interactive)
-  (let ((current-point (point)))
-    (end-of-line nil)
-    (let ((point-after (point)))
-      (goto-char current-point)
-      (if (equal current-point point-after)
-          (delete-indentation 1)
-        (paredit-kill nil)))))
+  (let ((current-point (point))
+        (bol-point (line-beginning-position))
+        (eol-point (line-end-position)))
+    (if (and (= current-point eol-point)
+             (/= current-point bol-point))
+        (delete-indentation 1)
+      (paredit-kill nil))))
 
 (eval-after-load "paredit"
   '(progn (define-key paredit-mode-map (kbd "C-c 0") 'paredit-forward-slurp-sexp)
@@ -58,7 +59,9 @@
 (add-hook 'slime-repl-mode-hook
           '(lambda ()
              (paredit-mode t)
-             (set-syntax-table clojure-mode-syntax-table)))
+             (set-syntax-table clojure-mode-syntax-table)
+             
+             ))
 
 (add-hook 'slime-repl-mode-hook
           '(lambda ()
@@ -75,6 +78,8 @@
              (define-key slime-repl-mode-map (kbd "C-c s") 'slime-repl-next-matching-input)
              (define-key slime-repl-mode-map (kbd "<return>") 'paredit-newline)
              (define-key slime-repl-mode-map (kbd "<S-return>") 'slime-repl-closing-return)
+             (define-key slime-repl-mode-map "{" 'paredit-open-brace)
+             (define-key slime-repl-mode-map "}" 'paredit-close-brace)
              ;; (define-key slime-repl-mode-map (kbd "M-r") 'slime-repl-previous-matching-input)
              ))
 
