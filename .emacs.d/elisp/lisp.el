@@ -153,3 +153,7 @@
      (define-key clojure-mode-map (kbd "C-*") 'earmuffy)
      (define-key clojure-mode-map "{" 'paredit-open-brace)
      (define-key clojure-mode-map "}" 'paredit-close-brace)))
+
+(add-hook 'emacs-lisp-mde
+          '(lambda ()
+             (define-key emacs-lisp-mode-map [f5] 'eval-buffer)))
