@@ -2,6 +2,7 @@
 (require 'slime-repl)
 (require 'clojure-mode)
 (require 'cljdoc)
+(require 'paredit)
 
 ;; paredit everywhere
 ;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
