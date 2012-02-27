@@ -59,15 +59,9 @@
 ;; Make Slime's REPL Clojure friendly
 (add-hook 'slime-repl-mode-hook
           '(lambda ()
-             (paredit-mode t)
-             (set-syntax-table clojure-mode-syntax-table)
-             
-             ))
-
-(add-hook 'slime-repl-mode-hook
-          '(lambda ()
              (clojure-mode-font-lock-setup)
              (paredit-mode t)
+             (set-syntax-table clojure-mode-syntax-table)
              (define-key slime-repl-mode-map (kbd "C-c r")
                '(lambda ()
                   (interactive)
@@ -97,6 +91,10 @@
             (eldoc-add-command 'electrify-return-if-match)
 
             (show-paren-mode t)))
+
+(add-hook 'slime-lisp-mode-hook
+          (lambda ()
+            (define-key slime-mode-map (kbd "M-p") nil)))
 
 (add-hook 'clojure-mode-hook
           (lambda ()
