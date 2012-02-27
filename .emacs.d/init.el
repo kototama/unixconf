@@ -15,11 +15,13 @@
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
 
-;; loads this file to have beautifull colors
-(load-file "~/.emacs.d/colors.el")
-
-;; loads lisp configuration
-(load-file "~/.emacs.d/lisp.el")
+;; loads personal emacs functions and configurations
+(load-file "~/.emacs.d/elisp/colors.el")
+(load-file "~/.emacs.d/elisp/anything.el")
+(load-file "~/.emacs.d/elisp/lisp.el")
+(load-file "~/.emacs.d/elisp/javascript.el")
+(load-file "~/.emacs.d/elisp/html.el")
+(load-file "~/.emacs.d/elisp/smartbeol.el")
 
 ;; fonts
 (if (eq window-system 'x)
@@ -51,9 +53,6 @@
 
 (yas/initialize)
 (yas/load-directory "~/.emacs.d/emacs-modes/yasnippet/snippets")
-
-;; associations between files extensions and modes
-(setq auto-mode-alist (cons '("\\.html$" . nxml-mode) auto-mode-alist))
 
 ;; ido-mode options
 (setq ido-enable-flex-matching t)
@@ -133,27 +132,6 @@
       (set-visited-file-name new-name)
       (set-buffer-modified-p nil))))))
 
-(defun move-indentation-or-line 
-  ()
-  "Moves to the beginning of indentation or to the beginning of
-   the line if the point is already on the first indentation"
-  (interactive)
-  (let ((point-before-identation (point)))
-    (back-to-indentation)
-    (let ((point-second-indentation (point)))
-      (if (equal point-before-identation point-second-indentation)
-          (move-beginning-of-line nil)))))
-
-(defun eager-kill-line
-  ()
-  "Kills the current line or join the next line 
-   if the point is at the end of the line"
-  (interactive)
-  (if (and (eolp)
-           (not (bolp)))
-      (delete-indentation 1)
-    (kill-line nil)))
-
 ;; global key bindings
 (global-set-key [C-tab] 'other-window)
 (global-set-key "\r" 'newline-and-indent)
@@ -169,9 +147,9 @@
 ;;                             (ido-find-file "~/.emacs")))
 
 (global-set-key (kbd "C-a") 'move-indentation-or-line)
-
-
 (global-set-key (kbd "M-g") 'goto-line)
+(global-set-key (kbd "M-p") 'my-anything)
+
 (global-set-key [f1] 'multi-term)
 (global-set-key [f2] 'multi-term-prev)
 (global-set-key [f3] 'multi-term-next)
@@ -182,7 +160,6 @@
 (global-set-key [f6] 'next-error)
 (global-set-key [f8] 'paredit-mode)
 (global-set-key [f9] 'magit-status)
-
 
 ;; (global-set-key [f10] 'toggle-fullscreen)
 (global-set-key [f12] '(lambda ()
@@ -196,24 +173,12 @@
                 '(lambda ()
                    (interactive)
                    (switch-to-buffer nil)))
+
 (global-set-key (kbd "C-c t") 'multi-term-next)
 (global-set-key (kbd "C-c T") 'multi-term)
 
-;; (if (window-system)
-;;     (progn
-;;       (set-frame-height (selected-frame) 66)
-;;       (set-frame-width (selected-frame) 240)))
 (add-hook 'window-setup-hook 'maximize-frame t)
 
-
-;; js2-mode configuration
-(add-hook 'js2-mode-hook
-  '(lambda ()
-     (define-key js2-mode-map (kbd "<return>") 
-       '(lambda ()
-          (interactive)
-          (js2-enter-key)
-          (indent-for-tab-command)))))
 
 ;; unicode
 (set-language-environment "UTF-8")
@@ -221,12 +186,4 @@
 
 ;; starts emacs server
 (server-start)
-
-(add-hook 'nxml-mode-hook
-          '(lambda ()
-             (define-key nxml-mode-map
-               (kbd "<C-return>") '(lambda ()
-                                     (interactive)
-                                     (switch-to-buffer nil)))))
-
 
