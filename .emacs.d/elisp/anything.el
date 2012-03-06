@@ -98,7 +98,7 @@
 	(type . file)))
 
 
-(setf anything-elisp-source (make-anything-directory-source "Elisp files" "~/.emacs.d/elisp"))
+(setf anything-elisp-source (make-anything-recursive-directory-source "Elisp files" "~/.emacs.d/elisp"))
 (setf anything-carneades-project-source 
       (make-anything-directories-in-directory-source "Carneades" "~/Documents/Projects/carneades/src/CarneadesEngine/src"))
 
@@ -122,3 +122,7 @@
           
           )
         "*my-anything*"))
+
+(add-hook 'term-mode-hook
+          '(lambda ()
+             (define-key term-mode-map "C-o" nil)))

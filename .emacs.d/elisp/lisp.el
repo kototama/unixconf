@@ -56,7 +56,11 @@
           (define-key paredit-mode-map (kbd "M-r") nil)
           (define-key paredit-mode-map (kbd "C-k") 'paredit-eager-kill-line)))
 
-;; Make Slime's REPL Clojure friendly
+(add-hook 'slime--mode-hook
+          '(lambda ()
+             ;; (define-key slime-mode-map (kbd "M-p") nil)
+             ))
+
 (add-hook 'slime-repl-mode-hook
           '(lambda ()
              (clojure-mode-font-lock-setup)
@@ -92,9 +96,6 @@
 
             (show-paren-mode t)))
 
-(add-hook 'slime-lisp-mode-hook
-          (lambda ()
-            (define-key slime-mode-map (kbd "M-p") nil)))
 
 (add-hook 'clojure-mode-hook
           (lambda ()
@@ -147,11 +148,12 @@
   '(lambda ()
      (paredit-mode t)
      (define-key clojure-mode-map [f5] 'slime-compile-and-load-file)
-     (define-key clojure-mode-map [f6] 'slime-edit-definition-with-etags)
+     (define-key clojure-mode-map [f7] 'slime-edit-definition-with-etags)
      (define-key clojure-mode-map (kbd "C-*") 'earmuffy)
      (define-key clojure-mode-map "{" 'paredit-open-brace)
      (define-key clojure-mode-map "}" 'paredit-close-brace)))
 
-(add-hook 'emacs-lisp-mde
+(add-hook 'emacs-lisp-mode
           '(lambda ()
-             (define-key emacs-lisp-mode-map [f5] 'eval-buffer)))
+             (define-key emacs-lisp-mode-map [f5] 'eval-buffer)
+             (define-key emacs-lisp-mode-map (kbd "M-o") nil)))

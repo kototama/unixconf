@@ -1,5 +1,3 @@
-
-
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
@@ -11,11 +9,13 @@
   (package-initialize))
 
 
+
 ;; path for the modes that are not part of package
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/misc")
 (add-to-list 'load-path "~/.emacs.d/emacs-modes/yasnippet")
 
 ;; loads personal emacs functions and configurations
+(load-file "~/.emacs.d/elisp/dev.el")
 (load-file "~/.emacs.d/elisp/colors.el")
 (load-file "~/.emacs.d/elisp/anything.el")
 (load-file "~/.emacs.d/elisp/lisp.el")
@@ -42,6 +42,7 @@
 (require 'igrep)
 (require 'package)
 (require 'maxframe)
+(require 'real-auto-save)
 
 (autoload 'mo-git-blame-file "mo-git-blame" nil t)
 (autoload 'mo-git-blame-current "mo-git-blame" nil t)
@@ -148,7 +149,7 @@
 
 (global-set-key (kbd "C-a") 'move-indentation-or-line)
 (global-set-key (kbd "M-g") 'goto-line)
-(global-set-key (kbd "M-p") 'my-anything)
+(global-set-key (kbd "M-o") 'my-anything)
 
 (global-set-key [f1] 'multi-term)
 (global-set-key [f2] 'multi-term-prev)
@@ -156,7 +157,6 @@
 (global-set-key [(shift f3)] 'kmacro-start-macro-or-insert-counter)
 (global-set-key [(shift f4)] 'kmacro-end-or-call-macro)
 (global-set-key [f4] 'slime-connect)
-(global-set-key [f5] 'slime-compile-and-load-file)
 (global-set-key [f6] 'next-error)
 (global-set-key [f8] 'paredit-mode)
 (global-set-key [f9] 'magit-status)
@@ -179,10 +179,15 @@
 
 (add-hook 'window-setup-hook 'maximize-frame t)
 
+(setq auto-save-interval 20)
+
+(add-hook 'org-mode-hook 'turn-on-real-auto-save)
 
 ;; unicode
 (set-language-environment "UTF-8")
 (setq slime-net-coding-system 'utf-8-unix)
+
+;; (setq browse-url-generic-program "/opt/google/chrome/chrome")
 
 ;; starts emacs server
 (server-start)
