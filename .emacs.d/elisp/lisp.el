@@ -155,5 +155,7 @@
 
 (add-hook 'emacs-lisp-mode
           '(lambda ()
+             (define-key emacs-lisp-mode-map (kbd "M-/") 'lisp-complete-symbol)
+             (define-key emacs-lisp-mode-map (kbd "C-M-/") 'dabbrev-expand)
              (define-key emacs-lisp-mode-map [f5] 'eval-buffer)
              (define-key emacs-lisp-mode-map (kbd "M-o") nil)))
