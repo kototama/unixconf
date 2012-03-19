@@ -5,7 +5,9 @@
 ;;; packages in your .emacs.
 (when
     (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
+     (expand-file-name "~/.emacs.d/emacs-modes/misc/package.el"))
+  (setq package-archives '(;; ("ELPA" . "http://tromey.com/elpa/")
+			   ("marmalade" . "http://marmalade-repo.org/packages/")))
   (package-initialize))
 
 
@@ -43,13 +45,10 @@
 (require 'package)
 (require 'maxframe)
 (require 'real-auto-save)
+(require 'smex) 
 
 (autoload 'mo-git-blame-file "mo-git-blame" nil t)
 (autoload 'mo-git-blame-current "mo-git-blame" nil t)
-
-(package-initialize)
-(setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-                         ("marmalade" . "http://marmalade-repo.org/packages/")))
 
 
 (yas/initialize)
@@ -134,7 +133,9 @@
       (set-buffer-modified-p nil))))))
 
 ;; global key bindings
-(global-set-key [C-tab] 'other-window)
+(global-set-key (kbd "<C-tab>") 'other-window)
+;; (global-set-key (kbd "<S-iso-lefttab>") '(lambda ()
+;;                                      (other-window -1)))
 (global-set-key "\r" 'newline-and-indent)
 (global-set-key (kbd "C-;") 'comment-region)
 (global-set-key (kbd "C-k") 'eager-kill-line)
@@ -150,6 +151,7 @@
 (global-set-key (kbd "C-a") 'move-indentation-or-line)
 (global-set-key (kbd "M-g") 'goto-line)
 (global-set-key (kbd "M-o") 'my-anything)
+(global-set-key (kbd "M-x") 'smex)
 
 (global-set-key [f1] 'multi-term)
 (global-set-key [f2] 'multi-term-prev)
@@ -182,6 +184,11 @@
 (setq auto-save-interval 20)
 
 (add-hook 'org-mode-hook 'turn-on-real-auto-save)
+(add-hook 'org-mode-hook '(lambda ()
+                            (define-key org-mode-map (kbd "<C-return>") nil)
+                            (define-key org-mode-map (kbd "<S-iso-lefttab>") nil)
+                            (define-key org-mode-map (kbd "<backtab>") nil)
+                            ))
 
 ;; unicode
 (set-language-environment "UTF-8")
@@ -192,3 +199,25 @@
 ;; starts emacs server
 (server-start)
 
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))
+
+
+;;; This was installed by package-install.el.
+;;; This provides support for the package system and
+;;; interfacing with ELPA, the package archive.
+;;; Move this code earlier if you want to reference
+;;; packages in your .emacs.
+(when
+    (load
+     (expand-file-name "~/.emacs.d/elpa/package.el"))
+  (package-initialize))

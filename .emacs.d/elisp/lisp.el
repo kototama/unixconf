@@ -1,5 +1,6 @@
-(require 'slime)
-(require 'slime-repl)
+
+;; (require 'slime)
+;; (require 'slime-repl)
 (require 'clojure-mode)
 (require 'cljdoc)
 (require 'paredit)
@@ -155,6 +156,8 @@
 
 (add-hook 'emacs-lisp-mode
           '(lambda ()
+             (elisp-slime-nav-mode t)
+             (define-key emacs-lisp-mode-map (kbd "M-.")'elisp-slime-nav-find-elisp-thing-at-point)
              (define-key emacs-lisp-mode-map (kbd "M-/") 'lisp-complete-symbol)
              (define-key emacs-lisp-mode-map (kbd "C-M-/") 'dabbrev-expand)
              (define-key emacs-lisp-mode-map [f5] 'eval-buffer)
