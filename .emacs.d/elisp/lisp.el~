@@ -4,6 +4,7 @@
 (require 'clojure-mode)
 (require 'cljdoc)
 (require 'paredit)
+(require 'clojure-project-mode)
 
 ;; paredit everywhere
 ;; (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1)))
@@ -78,9 +79,8 @@
              (define-key slime-repl-mode-map (kbd "C-c s") 'slime-repl-next-matching-input)
              (define-key slime-repl-mode-map (kbd "<return>") 'paredit-newline)
              (define-key slime-repl-mode-map (kbd "<S-return>") 'slime-repl-closing-return)
-             (define-key slime-repl-mode-map "{" 'paredit-open-curly)
-             (define-key slime-repl-mode-map "}" 'paredit-close-curly)
-             (define-key slime-repl-mode-map (kbd "DEL") 'paredit-backward-delete)
+             (define-key slime-repl-mode-map "{" 'paredit-open-brace)
+             (define-key slime-repl-mode-map "}" 'paredit-close-brace)
              ;; (define-key slime-repl-mode-map (kbd "M-r") 'slime-repl-previous-matching-input)
              ))
 

@@ -1,6 +1,8 @@
 (require 'anything)
 (require 'anything-config)
 
+(load-file "~/.emacs.d/elisp/projectfile.el")
+
 (defun files-in-below-directory (directory)
   "List the .el files in DIRECTORY and in its sub-directories."
   (interactive "DDirectory name: ")
@@ -97,10 +99,24 @@
 	(action . find-file)
 	(type . file)))
 
+(defun make-anything-project-files-source (source-name filepath)
+  "Returns an anything source for the file of directory"
+  `((name . ,(concat source-name))
+	(candidates . (lambda ()
+                        (list-project-files
+                         ,filepath)))
+	(action . find-file)
+	(type . file))
+  )
+
 
 (setf anything-elisp-source (make-anything-recursive-directory-source "Elisp files" "~/.emacs.d/elisp"))
-(setf anything-carneades-project-source 
-      (make-anything-directories-in-directory-source "Carneades" "~/Documents/Projects/carneades/src/CarneadesEngine/src"))
+;; (setf anything-carneades-project-source 
+;;       (make-anything-directories-in-directory-source "Carneades" "~/Documents/Projects/carneades/src/CarneadesEngine/src"))
+
+(setf anything-carneades-files (make-anything-project-files-source
+                                "Carneades files"
+                                "/home/pal/Documents/Projects/carneades/src/FILES"))
 
 (setq anything-etags-enable-tag-file-dir-cache t)
 (setq anything-etags-cache-tag-file-dir "~/Documents/Projects/carneades/src/")
@@ -115,11 +131,11 @@
           ;; anything-c-source-man-pages
           ;; anything-c-source-locate
           ;; anything-c-source-emacs-commands
-          anything-elisp-source
+          ;; anything-elisp-source
           anything-c-source-bookmarks
-          anything-carneades-project-source
+          ;; anything-carneades-project-source
+          anything-carneades-files
           anything-c-source-etags-select
-          
           )
         "*my-anything*"))
 

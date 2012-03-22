@@ -7,7 +7,8 @@
     (load
      (expand-file-name "~/.emacs.d/emacs-modes/misc/package.el"))
   (setq package-archives '(("ELPA" . "http://tromey.com/elpa/")
-			   ("marmalade" . "http://marmalade-repo.org/packages/")))
+			   ("marmalade" . "http://marmalade-repo.org/packages/")
+			   ))
   (package-initialize))
 
 
@@ -46,7 +47,8 @@
 (require 'maxframe)
 (require 'real-auto-save)
 (require 'smex) 
-(require 'project-mode)
+
+(smex-initialize)
 
 (autoload 'mo-git-blame-file "mo-git-blame" nil t)
 (autoload 'mo-git-blame-current "mo-git-blame" nil t)
@@ -152,7 +154,7 @@
 (global-set-key (kbd "C-a") 'move-indentation-or-line)
 (global-set-key (kbd "M-g") 'goto-line)
 (global-set-key (kbd "M-o") 'my-anything)
-;; (global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-x") 'smex)
 
 (global-set-key [f1] 'multi-term)
 (global-set-key [f2] 'multi-term-prev)
@@ -190,6 +192,9 @@
                             (define-key org-mode-map (kbd "<C-tab>") nil)
                             (define-key org-mode-map (kbd "<S-iso-lefttab>") nil)
                             (define-key org-mode-map (kbd "<backtab>") nil)))
+
+;; C programming
+(setq-default c-basic-offset 4)
 
 ;; unicode
 (set-language-environment "UTF-8")
