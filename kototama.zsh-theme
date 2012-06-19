@@ -1,0 +1,1 @@
+/home/pal/.oh-my-zsh/themes/kototama.zsh-theme
