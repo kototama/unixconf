@@ -1,6 +1,5 @@
 #!/bin/bash
 
-find . -name '*.clj' | xargs etags --regex='/[ \t\(]*def[a-z]* \([a-z-!]+\)/\1/' --regex='/[ \t\(]*ns \([a-z.]+\)/\1/'
-find . -name '*.js' | xargs etags --append --regex='/\.([a-z.]+) = function/\1/'
-
+find ~/Documents/Projects/carneades/src/CarneadesEngine -name '*.clj' | xargs etags
+find ~/Documents/Projects/carneades/src/PolicyModellingTool/resources/policymodellingtool/public/js/app/ -name "*.js" -exec etags -a {} \;
 
