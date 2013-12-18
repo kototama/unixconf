@@ -1,7 +1,7 @@
 alias ec='emacsclient'
 alias ecc='emacsclient -c'
-alias em='emacs'
+alias e='emacs'
 #alias emacs='t'
-alias open='gnome-open'
+alias open='thunar'
 alias magit='ec -e "(magit-status \"$(pwd)\")"'
 alias homegit="GIT_DIR=~/unixconf/.git GIT_WORK_TREE=~ git"
