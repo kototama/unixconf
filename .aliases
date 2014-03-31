@@ -1,16 +1,20 @@
 alias ec='emacsclient'
 alias ecc='emacsclient -c'
-alias em='emacs'
-#alias emacs='t'
-alias open='gnome-open'
-alias magit='ec -e "(magit-status \"$(pwd)\")"'
-alias homegit="GIT_DIR=~/unixconf/.git GIT_WORK_TREE=~ git"
+alias e='emacs'
+alias open='thunar'
 
 alias lc="lein clean"
 alias lr="lein repl"
 
+
+alias homegit="GIT_DIR=~/unixconf/ GIT_WORK_TREE=~ git"
+alias magit='ec -e "(magit-status \"$(pwd)\")"'
+
 alias gs="git status"
 alias gc="git commit"
+alias gcl="git commit"
 alias ga="git add"
 alias gp="git push"
 alias gpl="git pull"
+
+
