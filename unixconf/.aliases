@@ -7,7 +7,7 @@ alias lc="lein clean"
 alias lr="lein repl"
 
 
-alias homegit="GIT_DIR=~/unixconf/.git GIT_WORK_TREE=~ git"
+alias homegit="GIT_DIR=~/unixconf/ GIT_WORK_TREE=~ git"
 alias magit='ec -e "(magit-status \"$(pwd)\")"'
 
 alias gs="git status"
