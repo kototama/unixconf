@@ -106,5 +106,3 @@ fi
 # nice prompt
 . ~/local/bin/prompt.sh
 
-# Added by autojump install.sh
-source /etc/profile.d/autojump.bash
