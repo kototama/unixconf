@@ -1,2 +1,8 @@
-:set -XOverloadedStrings
-:set prompt "λ "
+import qualified Data.ByteString.Lazy as B
+import qualified Data.ByteString.Lazy.Char8 as C
+import Data.Maybe (fromJust)
+
+import Data.Aeson.Encode
+import Data.Aeson
+
+:set prompt "> "
