@@ -7,7 +7,8 @@ import qualified Data.Map as M
  
 main = xmonad xfceConfig
        { terminal = "xfce4-terminal"
-       , modMask = mod1Mask -- sets to alt key 
+       , modMask = mod1Mask -- sets to alt key
+--       , modMask = mod4Mask
        , borderWidth = 1 --was "3"
        , focusedBorderColor = "#4099FF"
        , normalBorderColor = "#474747"
