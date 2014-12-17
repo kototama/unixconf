@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# sleep is added because of MATE desktop
+# see https://superuser.com/questions/644521/linux-mint-mate-use-xkbcomp-to-load-a-keyboard-layout-on-startup
+
+sleep 10
+
+synclient VertEdgeScroll=1
+synclient VertTwoFingerScroll=1
