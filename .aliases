@@ -10,7 +10,6 @@ alias lr="lein repl"
 alias homegit="GIT_DIR=~/unixconf/.git GIT_WORK_TREE=~ git"
 alias magit='ec -e "(magit-status \"$(pwd)\")"'
 
-alias homegit="GIT_DIR=~/unixconf/ GIT_WORK_TREE=~ git"
 alias gc='git clone'
 alias skype='env PULSE_LATENCY_MSEC=30 skype'
 
