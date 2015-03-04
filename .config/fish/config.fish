@@ -1,10 +1,12 @@
 alias e "emacs"
-alias ec "emacsclient"
+alias ec "emacsclient -n -a=emacs"
 
 set -gx PATH /home/alphonse/projects/adhocracy3.mercator/bin $PATH
 
 set -gx A3_ROOT /home/alphonse/projects/adhocracy3.mercator
 set -gx LD_LIBRARY_PATH /home/alphonse/projects/adhocracy3.mercator/python/parts/opt/lib/
+
+set -gx EDITOR "emacsclient -n -a=emacs"
 
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
