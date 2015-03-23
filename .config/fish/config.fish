@@ -1,12 +1,14 @@
 alias e "emacs"
 alias ec "emacsclient -n -a=emacs"
+alias pacup "sudo pacman -Syu"
+alias aup "yaourt -Syu --aur"
 
-set -gx PATH /home/alphonse/projects/adhocracy3.mercator/bin $PATH
+set -gx PATH /home/alphonse/projects/adhocracy3.mercator/bin ~/.local/bin $PATH
 
 set -gx A3_ROOT /home/alphonse/projects/adhocracy3.mercator
 set -gx LD_LIBRARY_PATH /home/alphonse/projects/adhocracy3.mercator/python/parts/opt/lib/
 
-set -gx EDITOR "emacsclient -n -a=emacs"
+set -gx EDITOR "emacsclient -a=emacs"
 
 set fish_git_dirty_color red
 set fish_git_not_dirty_color green
