@@ -1,6 +1,6 @@
 import qualified Data.Map as M
+import System.Posix.Unistd (getSystemID, nodeName)
 
-import Network.HostName (getHostName)
 import XMonad.Config.Xfce
 import XMonad
 import XMonad.Config.Azerty
@@ -34,7 +34,10 @@ myConfig hostname = xfceConfig { terminal = "xfce4-terminal"
                             "adorno" -> myManageHook <+> manageHook xfceConfig
                             _ -> manageHook xfceConfig
            --       , modMask = mod1Mask -- sets to alt key
-           
+
+getHostName :: IO String
+getHostName = fmap nodeName getSystemID
+
 main = do
   hostname <- getHostName
   xmonad $ (myConfig hostname)
