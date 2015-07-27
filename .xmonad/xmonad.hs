@@ -11,14 +11,15 @@ myManageHook = composeAll [
   className =? "Galculator" --> doShift "2:programming",
   className =? "Emacs" --> doShift "2:programming",
   className =? "Firefox" --> doShift "3:web",
-  className =? "Pidgin" --> doShift "4:chat"
+  className =? "Pidgin" --> doShift "4:chat",
+  className =? "Tor Browser" --> doShift "5:private"
   ]
 
 myKeys = [--  ((mod4Mask, xK_semicolon), sendMessage (IncMasterN (-1)))
          -- , ((mod4Mask, xK_l), sendMessage (IncMasterN 1))
          -- , ((mod4Mask, xK_f), sendMessage (IncMasterN 1))
           ((mod4Mask, xK_e), spawn "emacs")
-         -- , ((mod4Mask .|. shiftMask, xK_c), spawn "emacsclient")
+         -- , ((mod4Mask .|. shiftMask, xK_e), spawn "galculator")
          ]
 
 myConfig hostname = xfceConfig { terminal = "xfce4-terminal"
