@@ -11,6 +11,6 @@ switch (hostname)
        case adorno
             source ~/.config/fish/work.fish
        case '*'
-          echo "not adorno"
+            . ~/.config/fish/home.fish            
 end
 
