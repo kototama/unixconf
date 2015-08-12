@@ -5,6 +5,8 @@ alias aup "yaourt -Syu --aur"
 
 set -gx PATH ~/.local/bin ~/local/bin $PATH
 
+# ~/.stack/programs/x86_64-linux/ghc-7.8.4/bin $PATH
+
 set -gx EDITOR "emacsclient -a=emacs"
 
 switch (hostname)
