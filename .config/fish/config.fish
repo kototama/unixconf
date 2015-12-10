@@ -8,7 +8,7 @@ set -gx PYENV_ROOT ~/.pyenv
 set -gx PATH $PYENV_ROOT/bin ~/.local/bin ~/local/bin $PATH
 
 # for XMonad with Java applications
-set -gx _JAVA_AWT_WM_NONREPARENTING=1
+set -gx _JAVA_AWT_WM_NONREPARENTING 1
 
 # ~/.stack/programs/x86_64-linux/ghc-7.8.4/bin $PATH
 
