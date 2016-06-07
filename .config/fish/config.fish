@@ -14,12 +14,9 @@ set -gx _JAVA_AWT_WM_NONREPARENTING 1
 
 set -gx EDITOR "emacsclient -a=emacs"
 
-switch (hostname)
-       case adorno
-            source ~/.config/fish/work.fish
+switch (id -ng)
+       case 'miaou'
+            . ~/.config/fish/work.fish
        case '*'
-            . ~/.config/fish/home.fish            
+            . ~/.config/fish/home.fish
 end
-
-# pyenv
-status --is-interactive; and . (pyenv init -|psub)
