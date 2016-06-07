@@ -7,8 +7,7 @@ import XMonad.Util.EZConfig
 import XMonad.Hooks.DynamicLog
 
 myManageHook = composeAll [
-  className =? "Galculator" --> doShift "2:programming",
-  className =? "Emacs" --> doShift "2:programming",
+  className =? "Emacs" --> doShift "1:terminal",
   className =? "Firefox" --> doShift "3:web",
   className =? "Pidgin" --> doShift "4:chat",
   className =? "Tor Browser" --> doShift "5:private"
@@ -22,7 +21,7 @@ myKeys = [--  ((mod4Mask, xK_semicolon), sendMessage (IncMasterN (-1)))
          ]
 
 myConfig hostname = defaultConfig { terminal = "xfce4-terminal"
-                      , workspaces = ["1:xfce","2:programming","3:web","4:chat","5:private","6","7","8","9","0"]
+                      , workspaces = ["1:editor","2:terminal","3:web","4:chat","5:private","6","7","8","9","0"]
                       , modMask = mod4Mask
                       , borderWidth = 1
                       , focusedBorderColor = "#4099FF"
