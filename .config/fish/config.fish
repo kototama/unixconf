@@ -2,10 +2,11 @@ alias e "emacs"
 alias ec "emacsclient -n -a=emacs"
 alias pacup "sudo etckeeper pre-install; and sudo pacman -Syu; and sudo etckeeper post-install"
 alias aup "sudo etckeeper pre-install; and yaourt -Syu --aur; and sudo etckeeper post-install"
+alias ll "ls -alh"
 
 set -gx PYENV_ROOT ~/.pyenv
 
-set -gx PATH $PYENV_ROOT/bin ~/.local/bin ~/local/bin $PATH
+set -gx PATH /opt/ghc/7.10.3/bin $PYENV_ROOT/bin ~/.local/bin ~/local/bin $PATH
 
 # for XMonad with Java applications
 set -gx _JAVA_AWT_WM_NONREPARENTING 1

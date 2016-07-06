@@ -26,5 +26,5 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-PATH=$HOME/.cabal/bin:$PATH
+PATH=/opt/ghc/7.10.3/bin/:$HOME/:$HOME/.cabal/bin:$PATH
 export PATH
