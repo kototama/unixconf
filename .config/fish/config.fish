@@ -6,7 +6,7 @@ alias ll "ls -alh"
 
 set -gx PYENV_ROOT ~/.pyenv
 
-set -gx PATH /opt/ghc/7.10.3/bin $PYENV_ROOT/bin ~/.local/bin ~/local/bin $PATH
+set -gx PATH /opt/alex/3.1.7/bin/ /opt/happy/1.19.5/bin/ /opt/ghc/7.10.3/bin $PYENV_ROOT/bin ~/.local/bin ~/local/bin $PATH
 
 # for XMonad with Java applications
 set -gx _JAVA_AWT_WM_NONREPARENTING 1

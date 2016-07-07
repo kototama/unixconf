@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 
-trayer --edge top --align right --widthtype request --expand true --SetDockType true --SetPartialStrut true --transparent true --alpha 0 --tint 0x1A1918 --expand true --heighttype pixel --height 20 --monitor 1 --padding 1 &
+
+# xmobar &
+# trayer --edge top --align right --widthtype request --expand true --SetDockType true --SetPartialStrut true --transparent true --alpha 0 --tint 0x1A1918 --expand true --heighttype pixel --height 20 --monitor 1 --padding 1 &
+
+# trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 6 --transparent true --alpha 0 --tint 0x000000 --height 16 & 
+# taffybar &> /tmp/taffybar.log
+
 nm-applet &
+
 /usr/bin/seafile-applet &
 ~/local/bin/keyboard.sh &

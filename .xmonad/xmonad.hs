@@ -5,11 +5,15 @@ import XMonad
 import XMonad.Config.Azerty
 import XMonad.Util.EZConfig
 import XMonad.Hooks.DynamicLog
+import XMonad.Util.Run(spawnPipe)
+import XMonad.Hooks.ManageDocks (manageDocks, avoidStruts)
+import XMonad.Hooks.EwmhDesktops (ewmh)
+import System.Taffybar.Hooks.PagerHints (pagerHints)
 
 myManageHook = composeAll [
   className =? "Emacs" --> doShift "1:terminal",
   className =? "Firefox" --> doShift "3:web",
-  className =? "Pidgin" --> doShift "4:chat",
+--  className =? "Pidgin" --> doShift "4:chat",
   className =? "Tor Browser" --> doShift "5:private"
   ]
 
@@ -26,17 +30,19 @@ myConfig hostname = defaultConfig { terminal = "xfce4-terminal"
                       , borderWidth = 1
                       , focusedBorderColor = "#4099FF"
                       , normalBorderColor = "#474747"
-                      , manageHook = theManageHook
+                      , manageHook = manageDocks
                       , keys = \c -> azertyKeys c `M.union` keys defaultConfig c
+                      , layoutHook  = avoidStruts $ layoutHook defaultConfig
                       } `additionalKeys` myKeys
-                    where theManageHook = case hostname of
-                            "adorno" -> myManageHook <+> manageHook defaultConfig
-                            _ -> manageHook defaultConfig
+                    -- where theManageHook = case hostname of
+                    --         "adorno" -> myManageHook <+> manageHook defaultConfig
+                    --         _ -> manageHook defaultConfig
            --       , modMask = mod1Mask -- sets to alt key
 
 getHostName :: IO String
 getHostName = fmap nodeName getSystemID
 
 main = do
+  _ <- spawnPipe "taffybar"
   hostname <- getHostName
-  xmonad =<< dzen (myConfig hostname)
+  xmonad $ ewmh $ pagerHints $ myConfig hostname
