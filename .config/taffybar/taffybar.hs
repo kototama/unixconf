@@ -10,6 +10,8 @@ import System.Taffybar.Battery
 
 import System.Taffybar.Widgets.PollingBar
 import System.Taffybar.Widgets.PollingGraph
+import System.Taffybar.Widgets.PollingLabel (pollingLabelNew)
+import System.Taffybar.CommandRunner (commandRunnerNew)
 
 import System.Information.Memory
 import System.Information.CPU
@@ -41,6 +43,7 @@ main = do
       mem = pollingGraphNew memCfg 1 memCallback
       cpu = pollingGraphNew cpuCfg 30 cpuCallback
       tray = systrayNew
+      temperature = commandRunnerNew 1.0 "hardware-temperature.sh" [] "temp:failure" "white"
   defaultTaffybar defaultTaffybarConfig { startWidgets = [ pager, note ]
-                                        , endWidgets = [ tray, clock, mem, cpu, battery, mpris ]
+                                        , endWidgets = [ tray, clock, mem, cpu, battery, temperature, mpris ]
                                         }
