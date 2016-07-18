@@ -1,6 +1,7 @@
 #!/bin/sh
 
-TEMP=`acpi -t | cut -d " "  -f 4,6`
-MSG=`acpi -t | cut -d " "  -f 3 | head -c-2`
+ACPI_TEMP=`acpi -t | cut -d " "  -f 4`
+HDD_TEMP=`sensors | grep Physical | tr -s ' ' | cut -d ' ' -f 4 | cut -c 2-`
+FAN=`sensors | grep fan | tr -s ' ' | cut -d ' ' -f 2`
 
-echo "$TEMP, $MSG"
+echo "$HDD_TEMP | $ACPI_TEMP°C | $FAN RPM"
