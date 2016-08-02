@@ -43,7 +43,7 @@ main = do
       mem = pollingGraphNew memCfg 1 memCallback
       cpu = pollingGraphNew cpuCfg 30 cpuCallback
       tray = systrayNew
-      temperature = commandRunnerNew 1.0 "hardware-temperature.sh" [] "temp:failure" "white"
+      temperature = commandRunnerNew 5.0 "hardware-temperature.sh" [] "temp:failure" "white"
   defaultTaffybar defaultTaffybarConfig { startWidgets = [ pager, note ]
                                         , endWidgets = [ tray, clock, mem, cpu, battery, temperature, mpris ]
                                         }
