@@ -105,6 +105,10 @@ fi
 ### pierre ###
 # nice prompt
 . ~/local/bin/prompt.sh
+if [ -f ~/local/opt/git-subrepo/.rc ]; then
+    source ~/local/opt/git-subrepo/.rc
+fi
+
 
 # Added by autojump install.sh
 ## source /etc/profile.d/autojump.bash
