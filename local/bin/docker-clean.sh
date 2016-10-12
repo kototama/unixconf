@@ -1,4 +1,4 @@
-#!/usr/bin/env docker
+#!/usr/bin/env bash 
 
 sudo docker rm -v $(sudo docker ps -a -q -f status=exited)
 
