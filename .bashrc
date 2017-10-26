@@ -114,3 +114,5 @@ fi
 ## source /etc/profile.d/autojump.bash
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# export PROMPT_COMMAND='history -a'
+export PROMPT_COMMAND="bash_prompt_command; history -a"
