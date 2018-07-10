@@ -26,5 +26,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-PATH=/opt/ghc/7.10.3/bin/:$HOME/:$HOME/.cabal/bin:$PATH
+source .work
+export GOROOT=~/local/opt/go
+PATH=$GOPATH:bin:$GOROOT/bin:~/.npm-global/bin:/opt/ghc/7.10.3/bin/:$HOME/:$HOME/.cabal/bin:$PATH:~/local/opt/elixir/bin
 export PATH
+export ERL_AFLAGS="-kernel shell_history enabled"
